@@ -1,6 +1,4 @@
 import { Component, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +7,5 @@ import { Observable } from 'rxjs';
 })
 @Injectable()
 export class AppComponent {
-  title = 'frontend';
+  title = 'Carvajal';
 }
