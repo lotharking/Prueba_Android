@@ -19,6 +19,7 @@ import { HistoryComponent } from './components/users/history/history.component';
 import { CarComponent } from './components/car/car.component';
 import { Page404Component } from './components/page404/page404.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DetailsProductComponent } from './components/details-product/details-pr
     HistoryComponent,
     CarComponent,
     Page404Component,
-    DetailsProductComponent
+    DetailsProductComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
