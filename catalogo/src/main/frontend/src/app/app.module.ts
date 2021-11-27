@@ -4,15 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http'; // HttpRequest
+/**HttpRequest */
+import { HttpClientModule } from '@angular/common/http';
 
-import { Routes } from '@angular/router';
+/**Material desing */
+
+/**Images */
+import { IgxCardModule } from "igniteui-angular";
+
+/**Components */
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WishlistComponent } from './components/users/wishlist/wishlist.component';
 import { HistoryComponent } from './components/users/history/history.component';
 import { CarComponent } from './components/car/car.component';
 import { Page404Component } from './components/page404/page404.component';
-import { DetailsProductComponent } from './components/details-product/details-product.component'; // Routes
+import { DetailsProductComponent } from './components/details-product/details-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,8 @@ import { DetailsProductComponent } from './components/details-product/details-pr
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IgxCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
