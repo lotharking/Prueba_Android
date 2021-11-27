@@ -15,8 +15,8 @@ export class AppComponent {
   constructor(private http: HttpClient){
   }
 
-  sayHello(): void {
+  sayHello() {
     this.result = 'loading...';
-    this.http.get('/api/hello-world').subscribe(response => this.result = response.toString());
+    return this.http.get('/api/hello-world', { responseType: 'text' }).subscribe(response => this.result = response.toString());
   }
 }
