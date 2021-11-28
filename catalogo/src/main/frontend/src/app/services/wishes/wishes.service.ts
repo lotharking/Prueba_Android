@@ -1,31 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Wishes } from 'src/app/models/wishes.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishesService {
 
-  wish = 'http://localhost:8081/whishes/';
-  user = 'testUser';
+  wish = 'http://localhost:8080/wish/';
 
   constructor(private httpClient: HttpClient) { }
 
-  // public list(): Observable<any> {
-  //   return this.httpClient.get<any>(this.wish + `list/${this.user}`);
-  // }
+  header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 
-  // public more(id: number): Observable<any> {
-  //   return this.httpClient.post<any>(this.wish + `add/${this.user}/${id}` , data);
-  // }
+  public add(id: number): Observable<Wishes[]> {
+    return this.httpClient.get<Wishes[]>(this.wish + `add/${id}`, 
+    { headers : this.header });
+  }
 
-  // public less(id: number): Observable<any> {
-  //   return this.httpClient.post<any>(this.wish + `delete/${this.user}/${id}`, data);
-  // }
+  public less(id: number): Observable<Wishes[]> {
+    return this.httpClient.get<Wishes[]>(this.wish + `less/${id}`, 
+    { headers : this.header });
+  }
 
-  // public add(id: number): Observable<any> {
-  //   return this.httpClient.put<any>(this.wish + `add/${id}`);
-  // }
+  public delete(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.wish + `delete/${id}`, 
+    { headers : this.header });
+  }
 
 }

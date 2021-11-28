@@ -14,14 +14,15 @@ import { Product } from '../../models/product.model'
 })
 export class ProductsService {
 
-  products = 'http://localhost:8080/productos/';
+  products = 'http://localhost:8080/products/';
+  header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 
   constructor( private httpClient: HttpClient) { }
 
   /**HttpRequest list products */
   public list(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.products + 'lista', 
-          {headers : new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })});
+    return this.httpClient.get<Product[]>(this.products + 'list', 
+          { headers : this.header });
   }
   
   /**HttpRequest product unique */

@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/productos")
+@RequestMapping("/products")
 public class ProductController {
 
   @Autowired
   private ProductRepository repository;
 
-  
-  @GetMapping(path = "/lista")
+  @GetMapping(path = "/list")
   public ResponseEntity<List<Product>> list(){
     List<Product> list = repository.findAll();
     return new ResponseEntity(list, HttpStatus.OK);
