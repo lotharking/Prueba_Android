@@ -18,7 +18,6 @@ import { WishlistComponent } from './components/users/wishlist/wishlist.componen
 import { HistoryComponent } from './components/users/history/history.component';
 import { CarComponent } from './components/car/car.component';
 import { Page404Component } from './components/page404/page404.component';
-import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
@@ -29,14 +28,13 @@ import { ContactComponent } from './components/contact/contact.component';
     HistoryComponent,
     CarComponent,
     Page404Component,
-    DetailsProductComponent,
     ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IgxCardModule,
+    IgxCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
