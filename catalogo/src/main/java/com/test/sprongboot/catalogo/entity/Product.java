@@ -32,12 +32,12 @@ public class Product {
 
     public void setName(String name) { this.name = name; }
 
-    public int getProductPrice() { return price; }
+    public int getprice() { return price; }
 
-    public void setProductPrice(int price) { this.price = price; }
+    public void setprice(int price) { this.price = price; }
 
-    public int getProductId() { return stock; }
+    public int getstock() { return stock; }
 
-    public void setProductId(int stock) { this.stock = stock; }
+    public void setstock(int stock) { this.stock = stock; }
     
 }

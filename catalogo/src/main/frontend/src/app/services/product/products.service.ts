@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /**Http*/
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 /**Rxjs */
 import { Observable } from 'rxjs'
@@ -14,13 +14,14 @@ import { Product } from '../../models/product.model'
 })
 export class ProductsService {
 
-  products = 'http://localhost:8080/product/';
+  products = 'http://localhost:8080/productos/';
 
   constructor( private httpClient: HttpClient) { }
 
   /**HttpRequest list products */
   public list(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.products + 'list');
+    return this.httpClient.get<Product[]>(this.products + 'lista', 
+          {headers : new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })});
   }
   
   /**HttpRequest product unique */
