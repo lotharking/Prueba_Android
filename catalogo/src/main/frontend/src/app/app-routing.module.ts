@@ -9,9 +9,8 @@ import { HistoryComponent } from './components/users/history/history.component';
 /**Rutas de la App*/
 const routes: Routes = [
   { path: '', component: CarComponent },
-  // { path: 'car/:id', component: DetailsProductComponent},
   { path: 'contactenos', component: ContactComponent},
-  { path: 'historial/1', component: HistoryComponent},
+  { path: 'historial', component: HistoryComponent},
   { path: '**', component: Page404Component},
 ];
 //end routing

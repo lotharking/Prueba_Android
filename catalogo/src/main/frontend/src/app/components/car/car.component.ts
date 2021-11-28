@@ -3,6 +3,7 @@ import { Wishes } from 'src/app/models/wishes.model';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/product/products.service';
 import { WishesService } from '../../services/wishes/wishes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -15,7 +16,8 @@ export class CarComponent implements OnInit {
   Wisheses: Wishes[] = [];
 
   constructor(private productsservice: ProductsService, 
-              private wishesservice: WishesService
+              private wishesservice: WishesService,
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,10 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
+  }
+
+  history(): void {
+    this.router.navigateByUrl('/historial');
   }
 
 }

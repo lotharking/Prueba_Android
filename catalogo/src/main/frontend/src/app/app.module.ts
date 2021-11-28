@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 /**Material desing */
+import { MatIconModule } from '@angular/material/icon'
 
 /**Images */
 import { IgxCardModule } from "igniteui-angular";
@@ -34,7 +35,8 @@ import { ContactComponent } from './components/contact/contact.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IgxCardModule
+    IgxCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

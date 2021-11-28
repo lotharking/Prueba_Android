@@ -1,21 +1,5 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
-  <li>
-    <span class="badge">item-id</span> item-name
-  </li>
+<h2>Historial de deseos</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let hist of history; index as i">{{i+1}} - {{hist.wish.product.name}}</li>
 </ul>
+
