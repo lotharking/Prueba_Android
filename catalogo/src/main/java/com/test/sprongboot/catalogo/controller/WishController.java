@@ -30,24 +30,15 @@ public class WishController {
     
     @GetMapping(path = "/add/{id}")
     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
-        int cont = 0;
         if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
-            // System.out.println("consultas 1: "+ repository.findByIdProduct(id)+ " id: "+ id);
-            // System.out.println("consultas 3: "+ productrepository.findById(id));
             repository.save(new Wish(productrepository.getById(id), 1));
-            // System.out.println("consultas 2: "+ repository.findByIdProduct(id));
         }
         else{            
-            // System.out.println("consultas 4: "+ repository.findIdByProduct(id));
             String data = repository.findIdByProduct(id);
-            if (data != null){
-                int data_out = Integer.valueOf(data);
-                // System.out.println("consultas 5: "+ repository.getById(data_out).getAmount());
-                cont = repository.getById(data_out).getAmount() + 1;
-                // System.out.println("consultas 6: "+ cont);
-                repository.getById(data_out).setAmount(cont);
-                repository.save(repository.getById(data_out));
-            }
+            int data_out = Integer.valueOf(data);
+            int cont = repository.getById(data_out).getAmount() + 1;
+            repository.getById(data_out).setAmount(cont);
+            repository.save(repository.getById(data_out));
         }
         List<Wish> list = repository.findAll();
         
@@ -56,15 +47,20 @@ public class WishController {
     
     @GetMapping(path = "/less/{id}")
     public ResponseEntity<?> less(@PathVariable("id") int id){
-        int cont = 0;
-        if (repository.existsById(id)){
-            cont = repository.getById(id).getAmount() - 1;
-            if (cont<0){
-                cont = 0;
-                repository.deleteById(id);
-            } else{
-                repository.getById(id).setAmount(cont);
-            }
+        // System.out.println("control 1: " +repository.findByIdProduct(id));
+        String data = repository.findIdByProduct(id);
+        int data_out = Integer.valueOf(data);
+        // System.out.println("control 2: " +repository.getById(data_out).getAmount());
+        int cont = repository.getById(data_out).getAmount() - 1;
+        // System.out.println("control 4: " +repository.getById(data_out).getAmount());
+        if (cont<0 || cont==0){
+            cont = 0;
+            repository.deleteById(data_out);
+        } else{
+            repository.getById(data_out).setAmount(cont);
+            // System.out.println("control 3: " + repository.getById(data_out));
+            repository.save(repository.getById(data_out));
+            // System.out.println("control 5: " +repository.getById(data_out));
         }
         List<Wish> list = repository.findAll();
 
