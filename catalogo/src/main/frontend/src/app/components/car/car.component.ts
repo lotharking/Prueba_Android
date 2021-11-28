@@ -46,11 +46,12 @@ export class CarComponent implements OnInit {
     );
   }
 
-  // delete(id: number): void {
-  //   this.wishesservice.delete(id).subscribe(
-  //     data => {
-  //     }
-  //   );
-  // }
+  delete(id: number=0): void {
+    this.wishesservice.delete(id).subscribe(
+      data => {
+        this.Wisheses = data;
+      }
+    );
+  }
 
 }

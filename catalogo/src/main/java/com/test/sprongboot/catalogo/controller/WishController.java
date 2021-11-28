@@ -2,7 +2,6 @@ package com.test.sprongboot.catalogo.controller;
 
 import java.util.List;
 
-import com.test.sprongboot.catalogo.Msg.Message;
 import com.test.sprongboot.catalogo.entity.Product;
 import com.test.sprongboot.catalogo.entity.Wish;
 import com.test.sprongboot.catalogo.repository.ProductRepository;
@@ -47,20 +46,15 @@ public class WishController {
     
     @GetMapping(path = "/less/{id}")
     public ResponseEntity<?> less(@PathVariable("id") int id){
-        // System.out.println("control 1: " +repository.findByIdProduct(id));
         String data = repository.findIdByProduct(id);
         int data_out = Integer.valueOf(data);
-        // System.out.println("control 2: " +repository.getById(data_out).getAmount());
         int cont = repository.getById(data_out).getAmount() - 1;
-        // System.out.println("control 4: " +repository.getById(data_out).getAmount());
         if (cont<0 || cont==0){
             cont = 0;
             repository.deleteById(data_out);
         } else{
             repository.getById(data_out).setAmount(cont);
-            // System.out.println("control 3: " + repository.getById(data_out));
             repository.save(repository.getById(data_out));
-            // System.out.println("control 5: " +repository.getById(data_out));
         }
         List<Wish> list = repository.findAll();
 
@@ -69,9 +63,11 @@ public class WishController {
     
     @GetMapping(path = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
-        if (repository.existsById(id))
-            repository.deleteById(id);
-        return new ResponseEntity(new Message("Item eliminado"), HttpStatus.OK);
+        String data = repository.findIdByProduct(id);
+        int data_out = Integer.valueOf(data);
+        repository.deleteById(data_out);
+        List<Wish> list = repository.findAll();
+        return new ResponseEntity(list, HttpStatus.OK);
   }
     
 }

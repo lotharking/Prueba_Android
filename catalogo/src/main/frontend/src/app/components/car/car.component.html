@@ -16,7 +16,8 @@
                             <td>{{wish.product.name}}</td>
                             <td>{{wish.amount}}</td>
                             <td><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
-                            &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button><br>
+                            &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button>
+                            &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">Eliminar</button><br>
                             $ precio
                             </td>
                         </tr>

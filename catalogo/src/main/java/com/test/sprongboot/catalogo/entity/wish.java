@@ -1,6 +1,5 @@
 package com.test.sprongboot.catalogo.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,15 +15,19 @@ public class Wish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Product product;
+
     private int amount;
+    
+    // private int check;
     
     public Wish() {}
 
     public Wish(Product product, int amount) {
         this.product = product;
         this.amount = amount;
+        // this.check = check;
     }    
 
     public int getId() { return id; }
@@ -38,4 +41,8 @@ public class Wish {
     public int getAmount() { return amount; }
 
     public void setAmount(int amount) { this.amount = amount; }
+
+    // public int getCheck() { return check; }
+
+    // public void setCheck(int check) { this.check = check; }
 }
