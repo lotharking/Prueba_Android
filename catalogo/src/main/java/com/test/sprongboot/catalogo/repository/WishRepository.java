@@ -1,12 +1,11 @@
 package com.test.sprongboot.catalogo.repository;
 
-import java.util.List;
-
-import com.test.sprongboot.catalogo.entity.Product;
+import com.test.sprongboot.catalogo.entity.Wish;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface WishRepository extends JpaRepository<Wish, Integer> {
+    
 }

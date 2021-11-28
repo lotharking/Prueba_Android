@@ -8,16 +8,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wish")
-public class wish {
+public class Wish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     private Product product;
     private int amount;
     
-    public wish() {}
+    public Wish() {}
 
-    public wish(Product product, int amount) {
+    public Wish(Product product, int amount) {
         this.product = product;
         this.amount = amount;
     }    
