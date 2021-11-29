@@ -14,6 +14,7 @@ export class CarComponent implements OnInit {
 
   Products: Product[] = [];
   Wisheses: Wishes[] = [];
+  WishesesProblem: Wishes[] = [];
 
   constructor(private productsservice: ProductsService, 
               private wishesservice: WishesService,
@@ -22,6 +23,7 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadProducts();
+    this.checkWishes();
   }
 
   uploadProducts(): void {
@@ -38,6 +40,7 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
+    this.checkWishes();
   }
 
   less(id: number=0): void {
@@ -46,6 +49,7 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
+    this.checkWishes();
   }
 
   delete(id: number=0): void {
@@ -54,10 +58,19 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
+    this.checkWishes();
   }
 
   history(): void {
     this.router.navigateByUrl('/historial');
+  }
+
+  checkWishes(): void {
+    this.wishesservice.list().subscribe(
+      data => {
+        this.WishesesProblem = data;
+      }
+    );
   }
 
 }

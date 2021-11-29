@@ -29,4 +29,10 @@ export class WishesService {
     { headers : this.header });
   }
 
+  /**HttpRequest list products */
+  public list(): Observable<Wishes[]> {
+    return this.httpClient.get<Wishes[]>(this.wish + 'list', 
+          { headers : this.header });
+  }
+
 }

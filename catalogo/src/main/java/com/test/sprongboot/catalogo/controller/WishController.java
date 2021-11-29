@@ -2,8 +2,10 @@ package com.test.sprongboot.catalogo.controller;
 
 import java.util.List;
 
+import com.test.sprongboot.catalogo.entity.History;
 import com.test.sprongboot.catalogo.entity.Product;
 import com.test.sprongboot.catalogo.entity.Wish;
+import com.test.sprongboot.catalogo.repository.HistoryRepository;
 import com.test.sprongboot.catalogo.repository.ProductRepository;
 import com.test.sprongboot.catalogo.repository.WishRepository;
 
@@ -26,11 +28,22 @@ public class WishController {
 
     @Autowired
     private ProductRepository productrepository;
+
+    @Autowired
+    private HistoryRepository historyrepository;
+
+    // @Autowired
+    // private HistoryRepository usersrepository;
     
     @GetMapping(path = "/add/{id}")
     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
         if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
             repository.save(new Wish(productrepository.getById(id), 1));
+            
+            String data = repository.findIdByProduct(id);
+            int data_out = Integer.valueOf(data);
+            if (historyrepository.findByIdwish(data_out) != null)
+                historyrepository.save(new History(repository.getById(data_out)));
         }
         else{            
             String data = repository.findIdByProduct(id);
@@ -68,6 +81,12 @@ public class WishController {
         repository.deleteById(data_out);
         List<Wish> list = repository.findAll();
         return new ResponseEntity(list, HttpStatus.OK);
+  }
+
+  @GetMapping(path = "/list")
+  public ResponseEntity<List<Wish>> list(){
+    List<Wish> list = repository.findAll();
+    return new ResponseEntity(list, HttpStatus.OK);
   }
     
 }
