@@ -13,10 +13,10 @@
             </thead>
             <tbody *ngIf="Wisheses.length != 0">
                         <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
-                            <td>{{wish.product.name}}</td>
-                            <td *ngIf="wish.amount > wish.product.stock" style="color: red;">No hay stock</td>
-                            <td *ngIf="wish.amount <= wish.product.stock">{{wish.amount}}</td>
-                            <td><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
+                            <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
+                            <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">No hay stock</td>
+                            <td *ngIf="wish.amount <= wish.product.stock && wish.amount != 0">{{wish.amount}}</td>
+                            <td *ngIf="wish.amount != 0"><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
                             &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button>
                             &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">Eliminar</button><br>
                             </td>
@@ -37,6 +37,11 @@
     </div>
 
     <div class="row">
+        
+    <form class="form-inline my-2 my-lg-0" style="display: flex; justify-content: flex-end;">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
             <div class="col-md-3" *ngFor="let product of Products; index as i">
                 <div class="card" style="margin: 5px 5px; height: 300;">
                     <img src="./assets/images/no-image.png" class="card-img-top" style="height: 150px; width: 100px; align-self: center;">
@@ -46,7 +51,7 @@
                         <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <button class="btn btn-success" (click)="add(product.id)">Agregar al carro</button>
+                        <button class="btn btn-success" (click)="add(product.id)">Agregar articulo</button>
                     </div>
                 </div>
             </div>

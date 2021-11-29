@@ -32,9 +32,6 @@ public class WishController {
     @Autowired
     private HistoryRepository historyrepository;
 
-    // @Autowired
-    // private HistoryRepository usersrepository;
-    
     @GetMapping(path = "/add/{id}")
     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
         if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
@@ -64,11 +61,9 @@ public class WishController {
         int cont = repository.getById(data_out).getAmount() - 1;
         if (cont<0 || cont==0){
             cont = 0;
-            repository.deleteById(data_out);
-        } else{
+        } 
             repository.getById(data_out).setAmount(cont);
             repository.save(repository.getById(data_out));
-        }
         List<Wish> list = repository.findAll();
 
         return new ResponseEntity(list, HttpStatus.OK);
@@ -78,7 +73,8 @@ public class WishController {
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         String data = repository.findIdByProduct(id);
         int data_out = Integer.valueOf(data);
-        repository.deleteById(data_out);
+        repository.getById(data_out).setAmount(0);
+        repository.save(repository.getById(data_out));
         List<Wish> list = repository.findAll();
         return new ResponseEntity(list, HttpStatus.OK);
   }
