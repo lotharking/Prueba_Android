@@ -1,3 +1,5 @@
+/**Entity wishes */
+
 package com.test.sprongboot.catalogo.entity;
 
 import javax.persistence.Entity;
