@@ -1,3 +1,5 @@
+/**Controller products and wishes */
+
 import { Component, OnInit } from '@angular/core';
 import { Wishes } from 'src/app/models/wishes.model';
 import { Product } from '../../models/product.model';
@@ -24,8 +26,10 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.uploadProducts();
     this.checkWishes();
+    this.uploadWishes();
   }
 
+  /**update list product */
   uploadProducts(): void {
     this.productsservice.list().subscribe(
       data => {
@@ -34,6 +38,16 @@ export class CarComponent implements OnInit {
     );
   }
 
+  /**update list wish */
+  uploadWishes(): void {
+    this.wishesservice.list().subscribe(
+      data => {
+        this.Wisheses = data;
+      }
+    );
+  }
+
+  /**add wish */
   add(id: number=0): void {
     this.wishesservice.add(id).subscribe(
       data => {
@@ -43,6 +57,7 @@ export class CarComponent implements OnInit {
     this.checkWishes();
   }
 
+  /**dismiss wish */
   less(id: number=0): void {
     this.wishesservice.less(id).subscribe(
       data => {
@@ -52,6 +67,7 @@ export class CarComponent implements OnInit {
     this.checkWishes();
   }
 
+  /**delete wish */
   delete(id: number=0): void {
     this.wishesservice.delete(id).subscribe(
       data => {
@@ -61,16 +77,28 @@ export class CarComponent implements OnInit {
     this.checkWishes();
   }
 
+  /**Redirect to history */    
   history(): void {
     this.router.navigateByUrl('/historial');
   }
 
+  /**check wishes list */
   checkWishes(): void {
     this.wishesservice.list().subscribe(
       data => {
         this.WishesesProblem = data;
       }
     );
+  }
+
+  search(): void {
+    var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
+    this.productsservice.search(searchValue.toUpperCase()).subscribe(
+      data => {
+        this.Products = data;
+      }
+    );
+    console.log(searchValue.toUpperCase())
   }
 
 }

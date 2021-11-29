@@ -26,8 +26,8 @@ export class ProductsService {
   }
   
   /**HttpRequest product unique */
-  public unique(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.products + `search/${id}`);
+  public search(value: string): Observable<any> {
+    return this.httpClient.get<any>(this.products + `search/${value}`);
   }
 
 }

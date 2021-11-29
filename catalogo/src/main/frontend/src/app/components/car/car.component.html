@@ -3,12 +3,12 @@
         <table class="table table-bordered" style="color: black;">
             <thead>
                 <tr>
-                    <th colspan="3" class="text-center">Lista de deseos &nbsp;<button class="btn btn-success" (click)="history()"><mat-icon>history</mat-icon></button></th>
+                    <th colspan="3" class="text-center">Lista de deseos &nbsp;<button class="btn btn-success" (click)="history()">Historial</button></th>
                 </tr>
                 <tr>
                     <th>Producto</th>
                     <th>Cantidad</th>
-                    <th>Suma</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody *ngIf="Wisheses.length != 0">
@@ -29,7 +29,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Total: $ 3000</td>
+                    <td colspan="3">Selecciona tus deseos</td>
                 </tr>
             </tfoot>
         </table>
@@ -39,8 +39,8 @@
     <div class="row">
         
     <form class="form-inline my-2 my-lg-0" style="display: flex; justify-content: flex-end;">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" id="uniqueID" value="" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="search()">Busqueda</button>
       </form>
             <div class="col-md-3" *ngFor="let product of Products; index as i">
                 <div class="card" style="margin: 5px 5px; height: 300;">

@@ -1,3 +1,5 @@
+/**Repository for methods of wishes */
+
 package com.test.sprongboot.catalogo.repository;
 
 import java.util.List;
@@ -21,8 +23,4 @@ public interface WishRepository extends JpaRepository<Wish, Integer> {
     @Query(value = "SELECT id FROM wish WHERE product_id =:id", 
        nativeQuery = true)
     String findIdByProduct(@Param("id") int id);
-
-   //  @Query(value = "SELECT id FROM wish WHERE product_id =:id", 
-   //     nativeQuery = true)
-   //  String findAllByCheck(@Param("id") int id);
 }
