@@ -1,3 +1,5 @@
+/**ORM for model History */
+
 package com.test.sprongboot.catalogo.entity;
 
 import javax.persistence.CascadeType;

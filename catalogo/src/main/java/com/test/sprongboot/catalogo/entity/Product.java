@@ -1,3 +1,5 @@
+/**ORM for model Product */
+
 package com.test.sprongboot.catalogo.entity;
 
 import javax.persistence.Entity;

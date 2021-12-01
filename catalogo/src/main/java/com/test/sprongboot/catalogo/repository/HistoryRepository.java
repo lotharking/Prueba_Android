@@ -1,3 +1,5 @@
+/**Repository for managment of consult in history */
+
 package com.test.sprongboot.catalogo.repository;
 
 import java.util.List;

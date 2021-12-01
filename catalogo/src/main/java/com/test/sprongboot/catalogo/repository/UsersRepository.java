@@ -1,3 +1,5 @@
+/**Repository for managment of consult in Users */
+
 package com.test.sprongboot.catalogo.repository;
 
 import com.test.sprongboot.catalogo.entity.User;
