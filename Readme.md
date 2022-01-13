@@ -1,4 +1,4 @@
-# Proyecto Prueba tecnica Carvajal
+## Lista de deseos
 
 ##Pagina web para gestionar una lista de deseos por parte de un usuario
 
