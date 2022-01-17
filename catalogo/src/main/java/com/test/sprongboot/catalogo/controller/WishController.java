@@ -24,70 +24,70 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/wish")
 public class WishController {
 
-    @Autowired
-    private WishRepository repository;
+//     @Autowired
+//     private WishRepository repository;
 
-    @Autowired
-    private ProductRepository productrepository;
+//     @Autowired
+//     private ProductRepository productrepository;
 
-    @Autowired
-    private HistoryRepository historyrepository;
+//     @Autowired
+//     private HistoryRepository historyrepository;
 
-    /**add wish */
-    @GetMapping(path = "/add/{id}")
-    public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
-        if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
-            repository.save(new Wish(productrepository.getById(id), 1));
+//     /**add wish */
+//     @GetMapping(path = "/add/{id}")
+//     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
+//         if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
+//             repository.save(new Wish(productrepository.getById(id), 1));
             
-            String data = repository.findIdByProduct(id);
-            int data_out = Integer.valueOf(data);
-            if (historyrepository.findByIdwish(data_out) != null)
-                historyrepository.save(new History(repository.getById(data_out)));
-        }
-        else{            
-            String data = repository.findIdByProduct(id);
-            int data_out = Integer.valueOf(data);
-            int cont = repository.getById(data_out).getAmount() + 1;
-            repository.getById(data_out).setAmount(cont);
-            repository.save(repository.getById(data_out));
-        }
-        List<Wish> list = repository.findAll();
+//             String data = repository.findIdByProduct(id);
+//             int data_out = Integer.valueOf(data);
+//             if (historyrepository.findByIdwish(data_out) != null)
+//                 historyrepository.save(new History(repository.getById(data_out)));
+//         }
+//         else{            
+//             String data = repository.findIdByProduct(id);
+//             int data_out = Integer.valueOf(data);
+//             int cont = repository.getById(data_out).getAmount() + 1;
+//             repository.getById(data_out).setAmount(cont);
+//             repository.save(repository.getById(data_out));
+//         }
+//         List<Wish> list = repository.findAll();
         
-        return new ResponseEntity(list, HttpStatus.OK);
-  }
+//         return new ResponseEntity(list, HttpStatus.OK);
+//   }
     
-    /**dismiss wish */
-    @GetMapping(path = "/less/{id}")
-    public ResponseEntity<?> less(@PathVariable("id") int id){
-        String data = repository.findIdByProduct(id);
-        int data_out = Integer.valueOf(data);
-        int cont = repository.getById(data_out).getAmount() - 1;
-        if (cont<0 || cont==0){
-            cont = 0;
-        } 
-            repository.getById(data_out).setAmount(cont);
-            repository.save(repository.getById(data_out));
-        List<Wish> list = repository.findAll();
+//     /**dismiss wish */
+//     @GetMapping(path = "/less/{id}")
+//     public ResponseEntity<?> less(@PathVariable("id") int id){
+//         String data = repository.findIdByProduct(id);
+//         int data_out = Integer.valueOf(data);
+//         int cont = repository.getById(data_out).getAmount() - 1;
+//         if (cont<0 || cont==0){
+//             cont = 0;
+//         } 
+//             repository.getById(data_out).setAmount(cont);
+//             repository.save(repository.getById(data_out));
+//         List<Wish> list = repository.findAll();
 
-        return new ResponseEntity(list, HttpStatus.OK);
-  }
+//         return new ResponseEntity(list, HttpStatus.OK);
+//   }
     
-    /**Delete wish in data */
-    @GetMapping(path = "/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
-        String data = repository.findIdByProduct(id);
-        int data_out = Integer.valueOf(data);
-        repository.getById(data_out).setAmount(0);
-        repository.save(repository.getById(data_out));
-        List<Wish> list = repository.findAll();
-        return new ResponseEntity(list, HttpStatus.OK);
-  }
+//     /**Delete wish in data */
+//     @GetMapping(path = "/delete/{id}")
+//     public ResponseEntity<?> delete(@PathVariable("id") int id){
+//         String data = repository.findIdByProduct(id);
+//         int data_out = Integer.valueOf(data);
+//         repository.getById(data_out).setAmount(0);
+//         repository.save(repository.getById(data_out));
+//         List<Wish> list = repository.findAll();
+//         return new ResponseEntity(list, HttpStatus.OK);
+//   }
 
-  /**List the wishes */
-  @GetMapping(path = "/list")
-  public ResponseEntity<List<Wish>> list(){
-    List<Wish> list = repository.findAll();
-    return new ResponseEntity(list, HttpStatus.OK);
-  }
+//   /**List the wishes */
+//   @GetMapping(path = "/list")
+//   public ResponseEntity<List<Wish>> list(){
+//     List<Wish> list = repository.findAll();
+//     return new ResponseEntity(list, HttpStatus.OK);
+//   }
     
 }

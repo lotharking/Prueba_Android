@@ -2,12 +2,18 @@
 
 package com.test.sprongboot.catalogo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,14 +23,15 @@ public class Wish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Product product;
+    @OneToMany(mappedBy="product",cascade=CascadeType.ALL)
+    private List<Product> products;
+
     private int amount;    
     
     public Wish() {}
 
-    public Wish(Product product, int amount) {
-        this.product = product;
+    public Wish(List<Product> products, int amount) {
+        this.products = products;
         this.amount = amount;
     }    
 
@@ -32,9 +39,9 @@ public class Wish {
 
     public void setId(int id) { this.id = id; }
 
-    public Product getProduct() { return product; }
+    public List<Product> getProduct() { return products; }
 
-    public void setProduct(Product product) { this.product = product; }
+    public void setProduct(List<Product> products) { this.products = products; }
 
     public int getAmount() { return amount; }
 
