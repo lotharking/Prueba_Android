@@ -3,12 +3,9 @@
 package com.test.sprongboot.catalogo.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,17 +18,12 @@ public class Product {
     private int price;
     private int stock;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wish_id")
-    private Product product;
-
     public Product(){}
 
-    public Product(String name, int price, int stock, Product product) {
+    public Product(String name, int price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
-        this.product = product;
     }
 
     public int getId() { return id; }
@@ -49,9 +41,5 @@ public class Product {
     public int getstock() { return stock; }
 
     public void setstock(int stock) { this.stock = stock; }
-
-    public Product getProduct() { return product; }
-
-    public void setProduct(Product product) { this.product = product; }
     
 }
