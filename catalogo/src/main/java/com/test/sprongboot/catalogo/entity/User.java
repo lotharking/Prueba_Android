@@ -2,10 +2,14 @@
 
 package com.test.sprongboot.catalogo.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,21 +17,29 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     int id;
 
     String first_name;
+    
     String last_name;
+    
     String username;
+    
     String pwd;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_WISH")
+    private Wish wish;
 
     public User() {}
 
-    public User(String first_name, String last_name, String username, String pwd){
+    public User(String first_name, String last_name, String username, String pwd, Wish wish){
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
         this.pwd = pwd;
+        this.wish = wish;
     }
 
     public int getId() { return id; }
@@ -49,5 +61,9 @@ public class User {
     public String getPWD() { return pwd; }
 
     public String setPWD(String pwd) { return pwd; }
+
+    public Wish getWish() { return wish; }
+
+    public void setWish(Wish wish) { this.wish = wish; }
     
 }
