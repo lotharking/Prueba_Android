@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     /**Search from product table */
-    @Query(value = "SELECT * FROM product where name like CONCAT('%',:value,'%')", 
+    @Query(value = "SELECT * FROM products where name like CONCAT('%',:value,'%')", 
        nativeQuery = true)
     List<Product> findAllByParam(@Param("value") String value);
 
     /**Search from product table with parameters */
-    @Query(value = "SELECT * FROM product where name like '%%'", 
+    @Query(value = "SELECT * FROM products where name like '%%'", 
        nativeQuery = true)
     List<Product> findAllByParamVoid();
 }

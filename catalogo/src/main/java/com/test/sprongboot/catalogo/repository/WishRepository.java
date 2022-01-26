@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 public interface WishRepository extends JpaRepository<Wish, Integer> {
 
    /**find data of product with id especific */
-   @Query(value = "SELECT * FROM wish WHERE product_id =:id", 
+   @Query(value = "SELECT * FROM wishes WHERE product_id =:id", 
    nativeQuery = true)
    List<String> findByIdProduct(@Param("id") int id);
    
    /**find id of wish with id especific */
-    @Query(value = "SELECT id FROM wish WHERE product_id =:id", 
+    @Query(value = "SELECT id FROM wishes WHERE product_id =:id", 
        nativeQuery = true)
     String findIdByProduct(@Param("id") int id);
 }
