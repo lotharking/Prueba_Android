@@ -41,7 +41,7 @@ public class WishController {
     @GetMapping(path = "/add/{id}")
     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
         if (repository.findByIdProduct(id) == null || repository.findByIdProduct(id).size() == 0){
-            repository.save(new Wish(productrepository.getById(id), 1, userRepository.getById(1)));
+            repository.save(new Wish(productrepository.getById(id), 1, userRepository.findByParam("test")));
             
             String data = repository.findIdByProduct(id);
             int data_out = Integer.valueOf(data);
