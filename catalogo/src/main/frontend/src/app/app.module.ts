@@ -20,6 +20,7 @@ import { HistoryComponent } from './components/users/history/history.component';
 import { CarComponent } from './components/car/car.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ContactComponent } from './components/contact/contact.component';
     HistoryComponent,
     CarComponent,
     Page404Component,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
