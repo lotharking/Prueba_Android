@@ -8,4 +8,5 @@ import { Component, Injectable } from '@angular/core';
 @Injectable()
 export class AppComponent {
   title = 'Carvajal';
+  loginPage = true;
 }
