@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../models/user.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
-  isAuth() {
-    return true;
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
   }
 
-  // login(user: string, password: string): boolean {
-  //   if (user === 'user' && password === 'password'){
-  //     localStorage.setItem('username', user);
-  //     return true;
-  //   }
-  //   return false;
-  // }
+  constructor(
+    private router: Router
+  ) {}
 
-  // logout(): any {
-  //   localStorage.removeItem('username');
-  // }
+  login(user: User) {
+    if (user.username !== '' && user.password !== '' ) {
+      this.loggedIn.next(true);
+      this.router.navigate(['/']);
+    }
+  }
 
-  // getUser(): any {
-  //   return localStorage.getItem('username');
-  // }
-
-  // isLoggedIn(): boolean {//valida si el username es distinto de null
-  //   return this.getUser() !== null;
-  // }
+  logout() {
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']);
+  }
 }
