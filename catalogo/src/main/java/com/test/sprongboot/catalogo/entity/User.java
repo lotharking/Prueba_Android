@@ -26,7 +26,7 @@ public class User {
     
     String username;
     
-    String pwd;
+    String password;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_WISH")
@@ -34,11 +34,11 @@ public class User {
 
     public User() {}
 
-    public User(String first_name, String last_name, String username, String pwd, Wish wish){
+    public User(String first_name, String last_name, String username, String password, Wish wish){
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
-        this.pwd = pwd;
+        this.password = password;
         this.wish = wish;
     }
 
@@ -58,9 +58,9 @@ public class User {
 
     public String setUsername(String username) { return username; }
 
-    public String getPWD() { return pwd; }
+    public String getPassword() { return password; }
 
-    public String setPWD(String pwd) { return pwd; }
+    public String setPassword(String password) { return password; }
 
     public Wish getWish() { return wish; }
 
