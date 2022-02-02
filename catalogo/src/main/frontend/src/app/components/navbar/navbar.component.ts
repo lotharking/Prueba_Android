@@ -11,23 +11,19 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
   public app_name: string = 'BookStore';
-  public isLogged: boolean = false;
+  isLogged= this.authService.isAuthenticated;
   ngOnInit() {
     this.getCurrentUser();
   }
 
-  getCurrentUser() {
-    
-      if (this.authService.isLoggedIn) {
-        console.log('user logged');
-        this.isLogged = true;
-      } else {
-        console.log('NOT user logged');
-        this.isLogged = false;
-      }
+  getCurrentUser() {   
+    console.log('logged value', this.isLogged);
   }
 
   onLogout() {
+    this.authService.logout;
+    console.log('logged value', this.isLogged);
+    this.router.navigate(['/login']);
   }
 
   send(): void {

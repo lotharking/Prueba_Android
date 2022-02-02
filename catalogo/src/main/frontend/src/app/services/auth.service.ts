@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.module';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   login(user: User) {
-    if (user.username !== '' && user.password !== '' ) {
+    if (user.username != '' && user.password != '' ) {
       this.loggedIn.next(true);
       this.router.navigate(['/']);
     }
@@ -27,5 +27,8 @@ export class AuthService {
   logout() {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
+  }
+  public isAuthenticated(): boolean {
+    return this.loggedIn.getValue();
   }
 }
