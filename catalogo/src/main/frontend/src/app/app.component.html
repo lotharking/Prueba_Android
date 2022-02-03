@@ -7,7 +7,7 @@
       </igx-card>
   </div>
 </div>
-<app-navbar *ngIf="!loginPage"></app-navbar>
+<app-navbar *ngIf="isLoggedIn()"></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

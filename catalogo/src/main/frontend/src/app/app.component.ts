@@ -10,5 +10,9 @@ import { AuthService } from '../app/services/auth.service'
 export class AppComponent {
   constructor(private authService: AuthService) {}
   title = 'Carvajal';
-  isLoggedIn= this.authService.isLoggedIn;
+  isLoggedIn(){
+    console.log('isLoggedIn -this._authService.isLoggedIn():',
+      this.authService.isAuthenticated());
+    return this.authService.isAuthenticated();
+  }
 }

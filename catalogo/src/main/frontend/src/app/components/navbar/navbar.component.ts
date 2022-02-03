@@ -10,19 +10,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
-  public app_name: string = 'BookStore';
-  isLogged= this.authService.isAuthenticated;
   ngOnInit() {
-    this.getCurrentUser();
-  }
-
-  getCurrentUser() {   
-    console.log('logged value', this.isLogged);
   }
 
   onLogout() {
-    this.authService.logout;
-    console.log('logged value', this.isLogged);
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 
