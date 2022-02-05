@@ -2,8 +2,6 @@
 
 package com.test.sprongboot.catalogo.repository;
 
-import java.util.List;
-
 import com.test.sprongboot.catalogo.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -13,8 +13,6 @@ export class AppComponent {
 
   /**If logged show navbar */
   isLoggedIn(){
-    console.log('isLoggedIn -this._authService.isLoggedIn():',
-      this.authService.isAuthenticated());
     return this.authService.isAuthenticated();
   }
 }

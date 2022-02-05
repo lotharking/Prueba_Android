@@ -1,4 +1,4 @@
-/**List controller */
+/**Products controller */
 
 package com.test.sprongboot.catalogo.controller;
 
@@ -31,7 +31,7 @@ public class ProductController {
     return new ResponseEntity(list, HttpStatus.OK);
   }
 
-  /**search product */
+  /**search product unique */
   @GetMapping(path = "/search/{value}")
   public ResponseEntity<List<Product>> search(@PathVariable("value") String value){
     List<Product> list = repository.findAllByParam(value);
