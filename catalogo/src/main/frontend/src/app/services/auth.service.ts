@@ -17,6 +17,7 @@ export class AuthService {
     private router: Router
   ) {}
 
+  /**Login user */
   login(user: User) {
     if (user.username != '' && user.password != '' ) {
       this.loggedIn.next(true);
@@ -24,10 +25,13 @@ export class AuthService {
     }
   }
 
+  /**Logout user */
   logout() {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
+
+  /**Validate login state */
   public isAuthenticated(): boolean {
     return this.loggedIn.getValue();
   }
