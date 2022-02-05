@@ -10,6 +10,8 @@ import { AuthService } from '../app/services/auth.service'
 export class AppComponent {
   constructor(private authService: AuthService) {}
   title = 'Carvajal';
+
+  /**If logged show navbar */
   isLoggedIn(){
     console.log('isLoggedIn -this._authService.isLoggedIn():',
       this.authService.isAuthenticated());

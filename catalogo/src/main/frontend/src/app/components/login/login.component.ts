@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   //   );
   // }
 
+  /**Submit form from validate credentials */
   onSubmit() {
     if (this.form.valid) {
       this.authService.login(this.form.value);
