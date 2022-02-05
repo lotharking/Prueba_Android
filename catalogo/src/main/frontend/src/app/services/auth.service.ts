@@ -19,6 +19,11 @@ export class AuthService {
 
   /**Login user */
   login(user: User) {
+    // this.productsservice.list().subscribe(
+    //   data => {
+    //     this.Products = data;
+    //   }
+    // );
     if (user.username != '' && user.password != '' ) {
       this.loggedIn.next(true);
       this.router.navigate(['/']);
