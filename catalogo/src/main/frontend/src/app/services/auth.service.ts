@@ -9,7 +9,7 @@ import { UsersService } from './users/users.service';
 })
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  UserDB: User = new User;
+  UserValidation: Boolean = false;
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -22,19 +22,20 @@ export class AuthService {
 
   /**Login user */
   login(user: User) {
-    this.userservice.search(user.username).subscribe(
+    this.userservice.login(user.username, user.password).subscribe(
       data => {
-        this.UserDB = data;
+        console.log("RESPUESTA ",data);
+        this.UserValidation = data;
+        if (data) {
+          this.loggedIn.next(true);
+          this.router.navigate(['/']);
+        } 
+        else {
+          this.loggedIn.next(false);
+          this.router.navigate(['/login']);
+        }
       }
     );
-    if (user.username == this.UserDB.username && user.password == this.UserDB.password ) {
-      this.loggedIn.next(true);
-      this.router.navigate(['/']);
-    } 
-    else {
-      this.loggedIn.next(false);
-      this.router.navigate(['/login']);
-    }
   }
 
   /**Logout user */
