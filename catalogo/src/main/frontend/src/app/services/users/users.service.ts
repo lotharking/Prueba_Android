@@ -13,7 +13,7 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   /**HttpRequest user unique */
-  public search(value: string): Observable<any> {
-    return this.httpClient.get<any>(this.users + `search/${value}`);
+  public login(username: string, password: string): Observable<any> {
+    return this.httpClient.get<any>(this.users + `login/username=${username}&password=${password}`);
   }
 }
