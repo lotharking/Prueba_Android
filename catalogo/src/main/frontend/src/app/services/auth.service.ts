@@ -27,7 +27,6 @@ export class AuthService {
         this.UserDB = data;
       }
     );
-    console.log(this.UserDB);
     if (user.username == this.UserDB.username && user.password == this.UserDB.password ) {
       this.loggedIn.next(true);
       this.router.navigate(['/']);
