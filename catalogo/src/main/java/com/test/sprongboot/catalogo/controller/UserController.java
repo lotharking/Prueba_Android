@@ -25,10 +25,14 @@ public class UserController {
     private UsersRepository repository;
 
     /**search user unique */
-    @GetMapping(path = "/search/{value}")
-    public ResponseEntity<User> search(@PathVariable("value") String value){
-      User user = repository.findByParam(value);
-      return new ResponseEntity(user, HttpStatus.OK);
+    @GetMapping(path = "/login/username={username}&password={password}")
+    public ResponseEntity<User> search(@PathVariable("username") String username, @PathVariable("password") String password){
+      User user = repository.findByParam(username);
+      boolean answer =false;
+      if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
+        answer= true;
+
+      return new ResponseEntity(answer, HttpStatus.OK);
     }
     
 }
