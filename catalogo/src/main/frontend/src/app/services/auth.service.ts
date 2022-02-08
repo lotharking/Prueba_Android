@@ -24,7 +24,6 @@ export class AuthService {
   login(user: User) {
     this.userservice.login(user.username, user.password).subscribe(
       data => {
-        console.log("RESPUESTA ",data);
         this.UserValidation = data;
         if (data) {
           this.loggedIn.next(true);
