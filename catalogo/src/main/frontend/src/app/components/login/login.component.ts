@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
-  private formSubmitAttempt!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,11 +25,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.authService.login(this.form.value);
-      this.formSubmitAttempt = true;
     }
     else {
       window.location.reload();
-      this.formSubmitAttempt = false;
     }
   }
 
