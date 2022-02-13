@@ -31,13 +31,13 @@ public class UserController {
     @PostMapping(value = "/login")///username={username}&password={password})
     // public ResponseEntity<User> login(@PathVariable("username") String username, @PathVariable("password") String password){
     public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
-      // User user = repository.findByParam(username);
-      // boolean answer =false;
-      // if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
-      //   answer= true;
+      User user = (repository.findByParam(dataUser.get("username").toString()) != null)? repository.findByParam(dataUser.get("username").toString()): new User();
+      boolean answer =false;
+      if (dataUser.get("username").toString().equals(user.getUsername()) && dataUser.get("password").toString().equals(user.getPassword()))
+        answer= true;
 
-      // return new ResponseEntity(answer, HttpStatus.OK);
-      return new ResponseEntity(dataUser, HttpStatus.OK);
+      return new ResponseEntity(answer, HttpStatus.OK);
+      // return new ResponseEntity(dataUser, HttpStatus.OK);
     }
     
 }

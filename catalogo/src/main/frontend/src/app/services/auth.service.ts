@@ -26,7 +26,7 @@ export class AuthService {
       data => {
         this.UserValidation = data;
         console.log(data);
-        if (data) {
+        if (data==true) {
           this.loggedIn.next(true);
           this.router.navigate(['/']);
         } 
