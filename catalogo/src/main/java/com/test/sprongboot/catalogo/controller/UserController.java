@@ -28,8 +28,7 @@ public class UserController {
     private UsersRepository repository;
 
     /**search user unique */
-    @PostMapping(value = "/login")///username={username}&password={password})
-    // public ResponseEntity<User> login(@PathVariable("username") String username, @PathVariable("password") String password){
+    @PostMapping(value = "/login")
     public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
       User user = (repository.findByParam(dataUser.get("username").toString()) != null)? repository.findByParam(dataUser.get("username").toString()): new User();
       boolean answer =false;
@@ -37,7 +36,6 @@ public class UserController {
         answer= true;
 
       return new ResponseEntity(answer, HttpStatus.OK);
-      // return new ResponseEntity(dataUser, HttpStatus.OK);
     }
     
 }
