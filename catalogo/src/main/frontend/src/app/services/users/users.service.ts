@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.module';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,6 @@ export class UsersService {
 
   /**HttpRequest user unique */
   public login(username: string, password: string): Observable<any> {
-    return this.httpClient.get<any>(this.users + `login/username=${username}&password=${password}`);
+    return this.httpClient.post<any>(this.users + 'login', {"username" : `${username}`, "password": `${password}`});
   }
 }
