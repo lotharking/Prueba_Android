@@ -7,13 +7,5 @@ export class User {
   username!: string;
   password!: string;
   wish!: Wishes;
-
-//   constructor() { 
-//       // Initialization inside the constructor
-//       this.first_name = "";
-//       this.last_name = "";
-//       this.username = "";
-//       this.password = "";
-//       this.wish;
-//    }
+  token: String;
 }

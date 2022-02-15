@@ -26,7 +26,8 @@ export class AuthService {
       data => {
         this.UserValidation = data;
         console.log(data);
-        if (data==true) {
+        if (data['token']!=null) {
+          user.token = data['token'];
           this.loggedIn.next(true);
           this.router.navigate(['/']);
         } 
