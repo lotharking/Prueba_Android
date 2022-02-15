@@ -27,52 +27,49 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UsersRepository repository;
+  @Autowired
+  private UsersRepository repository;
+
+  /** search user unique */
+  @PostMapping(value = "/login")
+  // public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
+  public User login(@RequestBody Map<String, Object> dataUser) {
+
+    String username = dataUser.get("username").toString();
+    String password = dataUser.get("password").toString();
+    User user = (repository.findByParam(username) != null) ? repository.findByParam(username) : new User();
+
     
-    /**search user unique */
-    @PostMapping(value = "/login")
-    // public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
-    public User login(@RequestBody Map<String, Object> dataUser){
-      
-      String username = dataUser.get("username").toString();
-      String password = dataUser.get("password").toString();
-      User user = (repository.findByParam(username) != null)? repository.findByParam(username): new User();
-      boolean answer =false;
-      
-      // token implement
+    if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {      
+      // token implement if user isValid
       String token = getJWTToken(username);
-      System.out.println("TOKEN " + token);
       user.setUsername(username);
       user.setToken(token);
-
-      if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
-        answer= true;
-
-      // return new ResponseEntity(answer, HttpStatus.OK);		
-      return user;		
     }
 
-    private String getJWTToken(String username) {
-      String secretKey = "mySecretKey";
-      List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-          .commaSeparatedStringToAuthorityList("ROLE_USER");
-      
-      String token = Jwts
-          .builder()
-          .setId("softtekJWT")
-          .setSubject(username)
-          .claim("authorities",
-              grantedAuthorities.stream()
-                  .map(GrantedAuthority::getAuthority)
-                  .collect(Collectors.toList()))
-          .setIssuedAt(new Date(System.currentTimeMillis()))
-          .setExpiration(new Date(System.currentTimeMillis() + 600000))
-          .signWith(SignatureAlgorithm.HS512,
-              secretKey.getBytes()).compact();
+    return user;
+  }
 
-  
-      return "Bearer " + token;
-    }
-    
+  private String getJWTToken(String username) {
+    String secretKey = "mySecretKey";
+    List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+        .commaSeparatedStringToAuthorityList("ROLE_USER");
+
+    String token = Jwts
+        .builder()
+        .setId("softtekJWT")
+        .setSubject(username)
+        .claim("authorities",
+            grantedAuthorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList()))
+        .setIssuedAt(new Date(System.currentTimeMillis()))
+        .setExpiration(new Date(System.currentTimeMillis() + 600000))
+        .signWith(SignatureAlgorithm.HS512,
+            secretKey.getBytes())
+        .compact();
+
+    return "Bearer " + token;
+  }
+
 }
