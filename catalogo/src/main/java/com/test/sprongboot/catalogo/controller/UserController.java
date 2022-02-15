@@ -2,22 +2,25 @@
 
 package com.test.sprongboot.catalogo.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.test.sprongboot.catalogo.entity.User;
 import com.test.sprongboot.catalogo.repository.UsersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,16 +29,50 @@ public class UserController {
 
     @Autowired
     private UsersRepository repository;
-
+    
     /**search user unique */
     @PostMapping(value = "/login")
-    public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
-      User user = (repository.findByParam(dataUser.get("username").toString()) != null)? repository.findByParam(dataUser.get("username").toString()): new User();
+    // public ResponseEntity<User> login(@RequestBody Map<String, Object> dataUser){
+    public User login(@RequestBody Map<String, Object> dataUser){
+      
+      String username = dataUser.get("username").toString();
+      String password = dataUser.get("password").toString();
+      User user = (repository.findByParam(username) != null)? repository.findByParam(username): new User();
       boolean answer =false;
-      if (dataUser.get("username").toString().equals(user.getUsername()) && dataUser.get("password").toString().equals(user.getPassword()))
+      
+      // token implement
+      String token = getJWTToken(username);
+      System.out.println("TOKEN " + token);
+      user.setUsername(username);
+      user.setToken(token);
+
+      if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
         answer= true;
 
-      return new ResponseEntity(answer, HttpStatus.OK);
+      // return new ResponseEntity(answer, HttpStatus.OK);		
+      return user;		
+    }
+
+    private String getJWTToken(String username) {
+      String secretKey = "mySecretKey";
+      List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+          .commaSeparatedStringToAuthorityList("ROLE_USER");
+      
+      String token = Jwts
+          .builder()
+          .setId("softtekJWT")
+          .setSubject(username)
+          .claim("authorities",
+              grantedAuthorities.stream()
+                  .map(GrantedAuthority::getAuthority)
+                  .collect(Collectors.toList()))
+          .setIssuedAt(new Date(System.currentTimeMillis()))
+          .setExpiration(new Date(System.currentTimeMillis() + 600000))
+          .signWith(SignatureAlgorithm.HS512,
+              secretKey.getBytes()).compact();
+
+  
+      return "Bearer " + token;
     }
     
 }
