@@ -65,7 +65,7 @@ public class UserController {
                 .collect(Collectors.toList()))
         .setIssuedAt(new Date(System.currentTimeMillis()))
         .setExpiration(new Date(System.currentTimeMillis() + 600000))
-        .signWith(SignatureAlgorithm.HS512,
+        .signWith(SignatureAlgorithm.HS256,
             secretKey.getBytes())
         .compact();
 
