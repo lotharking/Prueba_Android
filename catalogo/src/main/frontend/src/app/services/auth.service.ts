@@ -26,26 +26,29 @@ export class AuthService {
       data => {
         this.UserValidation = data;
         if (data['token']!=null) {
+          sessionStorage.setItem('username',data['username']);
+          sessionStorage.setItem('token', data['token']);
           user.token = data['token'];
           this.loggedIn.next(true);
           this.router.navigate(['/']);
         } 
-        else {
-          this.loggedIn.next(false);
-          this.router.navigate(['/login']);
-        }
+        // else {
+        //   this.loggedIn.next(false);
+        //   this.router.navigate(['/login']);
+        // }
       }
     );
   }
 
   /**Logout user */
   logout() {
-    this.loggedIn.next(false);
-    this.router.navigate(['/login']);
+    sessionStorage.removeItem('username')
+    // this.router.navigate(['login']);
   }
 
   /**Validate login state */
-  public isAuthenticated(): boolean {
-    return this.loggedIn.getValue();
+  public isAuthenticated() {
+    let user = sessionStorage.getItem("username");
+    return !(user === null);
   }
 }
