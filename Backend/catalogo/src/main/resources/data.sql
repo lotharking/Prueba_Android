@@ -13,5 +13,5 @@ INSERT INTO products (name, price, stock) VALUES
   ('CASAS', 1002, 20),
   ('BORRADORES', 500, 25);
 
-INSERT INTO users (first_name, last_name, username, password) VALUES
-  ('test', 'tst', 'test', 'test');
+-- INSERT INTO users (first_name, last_name, username, password) VALUES
+--   ('test', 'tst', 'test', 'test');

@@ -1,14 +1,14 @@
 /**Users controller */
 
-package com.test.sprongboot.catalogo.controller;
+package com.test.users_guide.controller;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.test.sprongboot.catalogo.entity.User;
-import com.test.sprongboot.catalogo.repository.UsersRepository;
+import com.test.users_guide.entity.User;
+import com.test.users_guide.repository.UsersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
