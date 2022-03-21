@@ -1,4 +1,4 @@
-package com.test.users_guide.security;
+package com.test.sprongboot.catalogo.security;
 
 import java.io.IOException;
 import java.util.List;

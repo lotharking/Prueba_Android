@@ -1,8 +1,8 @@
 /**Repository for managment of consult in Users */
 
-package com.test.users_guide.repository;
+package com.test.sprongboot.catalogo.repository;
 
-import com.test.users_guide.entity.User;
+import com.test.sprongboot.catalogo.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
