@@ -16,13 +16,10 @@ import javax.persistence.Table;
 public class Wish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    
+    int id;    
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Product product;
-       
-    private int amount;
-    
+    private Product product;       
+    private int amount;    
     @OneToOne(mappedBy = "wish")
     private User user;
     
@@ -35,18 +32,14 @@ public class Wish {
     }    
 
     public int getId() { return id; }
-
     public void setId(int id) { this.id = id; }
 
     public Product getProduct() { return product; }
-
     public void setProduct(Product product) { this.product = product; }
 
     public User getUser() { return user; }
-
     public void setUser(User user) { this.user = user; }
 
     public int getAmount() { return amount; }
-
     public void setAmount(int amount) { this.amount = amount; }
 }

@@ -18,17 +18,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     int id;
-
-    String first_name;
-    
-    String last_name;
-    
-    String username;
-    
-    String password;
-
-    String token;
-
+    private String first_name;    
+    private String last_name;    
+    private String username;    
+    private String password;
+    private String token;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_WISH")
     private Wish wish;
@@ -45,31 +39,24 @@ public class User {
     }
 
     public int getId() { return id; }
-
     public void setId(int id) { this.id = id; }
 
     public String getFirstName() { return first_name; }
-
     public String setFirstName(String first_name) { return this.first_name = first_name; }
 
     public String getLastName() { return last_name; }
-
     public String setLastName(String last_name) { return this.last_name = last_name; }
 
     public String getUsername() { return username; }
-
     public String setUsername(String username) { return this.username = username; }
 
     public String getPassword() { return password; }
-
     public String setPassword(String password) { return this.password = password; }
 
     public String getToken() { return token; }
-
     public String setToken(String token) { return this.token = token; }
 
     public Wish getWish() { return wish; }
-
     public void setWish(Wish wish) { this.wish = wish; }
     
 }
