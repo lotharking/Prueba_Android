@@ -6,11 +6,10 @@ import java.util.List;
 
 import com.test.sprongboot.catalogo.entity.History;
 import com.test.sprongboot.catalogo.entity.Wish;
-import com.test.sprongboot.catalogo.repository.HistoryRepository;
 import com.test.sprongboot.catalogo.repository.ProductRepository;
 import com.test.sprongboot.catalogo.repository.UsersRepository;
 import com.test.sprongboot.catalogo.repository.WishRepository;
-import com.test.sprongboot.catalogo.service.HistoryService;
+import com.test.sprongboot.catalogo.service.history.HistoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

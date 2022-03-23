@@ -1,4 +1,4 @@
-package com.test.sprongboot.catalogo.service;
+package com.test.sprongboot.catalogo.service.history;
 
 import java.util.List;
 import java.util.Optional;

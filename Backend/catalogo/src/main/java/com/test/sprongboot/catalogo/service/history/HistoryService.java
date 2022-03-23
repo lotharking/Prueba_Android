@@ -1,4 +1,4 @@
-package com.test.sprongboot.catalogo.service;
+package com.test.sprongboot.catalogo.service.history;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.test.sprongboot.catalogo.entity.History;
 
 public interface HistoryService {
+    
     List<String> findByIdwish(int id);
 
     List<History> findAll();
