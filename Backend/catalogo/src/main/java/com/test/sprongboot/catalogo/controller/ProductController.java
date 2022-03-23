@@ -5,7 +5,7 @@ package com.test.sprongboot.catalogo.controller;
 import java.util.List;
 
 import com.test.sprongboot.catalogo.entity.Product;
-import com.test.sprongboot.catalogo.repository.ProductRepository;
+import com.test.sprongboot.catalogo.service.product.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,26 +22,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
   @Autowired
-  private ProductRepository repository;
+  private ProductService productService;
 
   /**list product */
   @GetMapping(path = "/list")
   public ResponseEntity<List<Product>> list(){
-    List<Product> list = repository.findAll();
+    List<Product> list = productService.findAll();
     return new ResponseEntity(list, HttpStatus.OK);
   }
 
   /**search product unique */
   @GetMapping(path = "/search/{value}")
   public ResponseEntity<List<Product>> search(@PathVariable("value") String value){
-    List<Product> list = repository.findAllByParam(value);
+    List<Product> list = productService.findAllByParam(value);
     return new ResponseEntity(list, HttpStatus.OK);
   }
 
   /**search product */
   @GetMapping(path = "/search/")
   public ResponseEntity<List<Product>> searchvoid(){
-    List<Product> list = repository.findAllByParamVoid();
+    List<Product> list = productService.findAllByParamVoid();
     return new ResponseEntity(list, HttpStatus.OK);
   }
 }

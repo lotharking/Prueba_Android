@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.test.sprongboot.catalogo.entity.User;
-import com.test.sprongboot.catalogo.repository.UsersRepository;
 import com.test.sprongboot.catalogo.service.users.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
