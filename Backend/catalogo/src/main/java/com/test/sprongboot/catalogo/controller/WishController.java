@@ -10,6 +10,7 @@ import com.test.sprongboot.catalogo.repository.HistoryRepository;
 import com.test.sprongboot.catalogo.repository.ProductRepository;
 import com.test.sprongboot.catalogo.repository.UsersRepository;
 import com.test.sprongboot.catalogo.repository.WishRepository;
+import com.test.sprongboot.catalogo.service.HistoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class WishController {
     private ProductRepository productrepository;
 
     @Autowired
-    private HistoryRepository historyrepository;
+    private HistoryService historyService;
 
     @Autowired
     private UsersRepository userRepository;
@@ -45,8 +46,8 @@ public class WishController {
             
             String data = repository.findIdByProduct(id);
             int data_out = Integer.valueOf(data);
-            if (historyrepository.findByIdwish(data_out) != null)
-                historyrepository.save(new History(repository.getById(data_out)));
+            if (historyService.findByIdwish(data_out) != null)
+            historyService.save(new History(repository.getById(data_out)));
         }
         else{            
             String data = repository.findIdByProduct(id);

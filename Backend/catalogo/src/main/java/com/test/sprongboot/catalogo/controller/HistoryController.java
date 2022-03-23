@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.test.sprongboot.catalogo.entity.History;
 import com.test.sprongboot.catalogo.repository.HistoryRepository;
+import com.test.sprongboot.catalogo.service.HistoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HistoryController {
 
     @Autowired
-    private HistoryRepository repository;
+    private HistoryService studentService;
     
     @GetMapping(path = "/list")
     public ResponseEntity<List<History>> list(){
-        List<History> list = repository.findAll();
+        List<History> list = studentService.findAll();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
