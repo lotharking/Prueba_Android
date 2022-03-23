@@ -1,5 +1,9 @@
 package com.test.sprongboot.catalogo.service.users;
 
-public class UsersService {
+import com.test.sprongboot.catalogo.entity.User;
+
+public interface UsersService {
+
+    User findByParam(String value);
     
 }

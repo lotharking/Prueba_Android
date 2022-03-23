@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.test.sprongboot.catalogo.entity.User;
 import com.test.sprongboot.catalogo.repository.UsersRepository;
+import com.test.sprongboot.catalogo.service.users.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +29,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class UserController {
 
   @Autowired
-  private UsersRepository repository;
+  private UsersService usersService;
 
   /** search user unique */
   @PostMapping(value = "/login")
@@ -37,7 +38,7 @@ public class UserController {
 
     String username = dataUser.get("username").toString();
     String password = dataUser.get("password").toString();
-    User user = (repository.findByParam(username) != null) ? repository.findByParam(username) : new User();
+    User user = (usersService.findByParam(username) != null) ? usersService.findByParam(username) : new User();
 
     
     if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {      
