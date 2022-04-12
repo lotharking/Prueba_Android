@@ -28,20 +28,20 @@ public class ProductController {
   @GetMapping(path = "/list")
   public ResponseEntity<List<Product>> list(){
     List<Product> list = productService.findAll();
-    return new ResponseEntity(list, HttpStatus.OK);
+    return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
   }
 
   /**search product unique */
   @GetMapping(path = "/search/{value}")
   public ResponseEntity<List<Product>> search(@PathVariable("value") String value){
     List<Product> list = productService.findAllByParam(value);
-    return new ResponseEntity(list, HttpStatus.OK);
+    return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
   }
 
   /**search product */
   @GetMapping(path = "/search/")
   public ResponseEntity<List<Product>> searchvoid(){
     List<Product> list = productService.findAllByParamVoid();
-    return new ResponseEntity(list, HttpStatus.OK);
+    return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
   }
 }

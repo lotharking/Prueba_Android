@@ -24,7 +24,7 @@ public class HistoryController {
     @GetMapping(path = "/list")
     public ResponseEntity<List<History>> list(){
         List<History> list = studentService.findAll();
-        return new ResponseEntity(list, HttpStatus.OK);
+        return new ResponseEntity<List<History>>(list, HttpStatus.OK);
     }
     
 }

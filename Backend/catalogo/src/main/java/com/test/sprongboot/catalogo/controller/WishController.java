@@ -57,12 +57,12 @@ public class WishController {
         }
         List<Wish> list = wishService.findAll();
         
-        return new ResponseEntity(list, HttpStatus.OK);
+        return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
     
     /**dismiss wish */
     @GetMapping(path = "/less/{id}")
-    public ResponseEntity<?> less(@PathVariable("id") int id){
+    public ResponseEntity<List<Wish>> less(@PathVariable("id") int id){
         String data = wishService.findIdByProduct(id);
         int data_out = Integer.valueOf(data);
         int cont = wishService.getById(data_out).getAmount() - 1;
@@ -73,25 +73,25 @@ public class WishController {
             wishService.save(wishService.getById(data_out));
         List<Wish> list = wishService.findAll();
 
-        return new ResponseEntity(list, HttpStatus.OK);
+        return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
     
     /**Delete wish in data */
     @GetMapping(path = "/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
+    public ResponseEntity<List<Wish>> delete(@PathVariable("id") int id){
         String data = wishService.findIdByProduct(id);
         int data_out = Integer.valueOf(data);
         wishService.getById(data_out).setAmount(0);
         wishService.save(wishService.getById(data_out));
         List<Wish> list = wishService.findAll();
-        return new ResponseEntity(list, HttpStatus.OK);
+        return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
 
   /**List the wishes */
   @GetMapping(path = "/list")
   public ResponseEntity<List<Wish>> list(){
     List<Wish> list = wishService.findAll();
-    return new ResponseEntity(list, HttpStatus.OK);
+    return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
     
 }
