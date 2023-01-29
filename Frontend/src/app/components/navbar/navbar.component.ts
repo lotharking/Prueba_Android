@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; // Service
 import { Router } from '@angular/router';
+import { CarComponent } from '../car/car.component';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+              private carcomponent: CarComponent,
+              private router: Router) { }
   ngOnInit() {
   }
 
@@ -20,6 +23,11 @@ export class NavbarComponent implements OnInit {
 
   send(): void {
     this.router.navigateByUrl('/');
+  }
+
+  search(): void {
+    var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
+    this.carcomponent.searchNavBar(searchValue);
   }
 
 }

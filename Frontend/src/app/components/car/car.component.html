@@ -37,24 +37,19 @@
     </div>
 
     <div class="row">
-        
-    <form class="form-inline my-2 my-lg-0" style="display: flex; justify-content: flex-end;">
-        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" id="uniqueID" value="" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="search()">Busqueda</button>
-      </form>
-            <div class="col-md-3" *ngFor="let product of Products; index as i">
-                <div class="card" style="margin: 5px 5px; height: 300; object-fit: cover;">
-                    <img src="./assets/images/no-image.png" class="card-img-top" style="height: 150px; width: 100px; align-self: center;">
-                    <div class="card-body" style="text-align: center;">
-                        <h6 class="card-title">{{product.name}}</h6>
-                        <p class="card-text">$&nbsp;{{product.price}}</p>
-                        <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <button class="btn btn-success" (click)="add(product.id)">Agregar articulo</button>
-                    </div>
+        <div class="col-md-3" *ngFor="let product of Products; index as i">
+            <div class="card" style="margin: 5px 5px; height: 300; object-fit: cover;">
+                <img src="./assets/images/no-image.png" class="card-img-top" style="height: 150px; width: 100px; align-self: center;">
+                <div class="card-body" style="text-align: center;">
+                    <h6 class="card-title">{{product.name}}</h6>
+                    <p class="card-text">$&nbsp;{{product.price}}</p>
+                    <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-success" (click)="add(product.id)">Agregar articulo</button>
                 </div>
             </div>
+        </div>
 
     </div>
 </div>

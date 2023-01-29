@@ -45,7 +45,7 @@ import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.s
     MatIconModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, CarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

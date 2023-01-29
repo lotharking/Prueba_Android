@@ -1,6 +1,6 @@
 /**Controller products and wishes */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Wishes } from 'src/app/models/wishes.model';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/product/products.service';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.sass']
 })
+
 export class CarComponent implements OnInit {
 
   Products: Product[] = [];
@@ -20,7 +21,8 @@ export class CarComponent implements OnInit {
 
   constructor(private productsservice: ProductsService, 
               private wishesservice: WishesService,
-              private router: Router
+              private router: Router,
+              private cdr: ChangeDetectorRef
               ) { }
 
   ngOnInit(): void {
@@ -91,14 +93,13 @@ export class CarComponent implements OnInit {
     );
   }
 
-  search(): void {
-    var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
+  searchNavBar(searchValue: String): void {
     this.productsservice.search(searchValue.toUpperCase()).subscribe(
       data => {
-        this.Products = data;
+        this.Products = data;      
       }
     );
-    console.log(searchValue.toUpperCase())
+    this.cdr.detectChanges();
   }
 
 }
