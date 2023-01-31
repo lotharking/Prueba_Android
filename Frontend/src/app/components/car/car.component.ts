@@ -1,6 +1,6 @@
 /**Controller products and wishes */
 
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Wishes } from 'src/app/models/wishes.model';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/product/products.service';
@@ -21,8 +21,7 @@ export class CarComponent implements OnInit {
 
   constructor(private productsservice: ProductsService, 
               private wishesservice: WishesService,
-              private router: Router,
-              private cdr: ChangeDetectorRef
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -99,7 +98,6 @@ export class CarComponent implements OnInit {
         this.Products = data;      
       }
     );
-    this.cdr.detectChanges();
   }
 
 }
