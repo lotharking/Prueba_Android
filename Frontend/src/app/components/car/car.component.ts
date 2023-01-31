@@ -19,7 +19,7 @@ export class CarComponent implements OnInit {
   Wisheses: Wishes[] = [];
   WishesesProblem: Wishes[] = [];
 
-  constructor(private productsservice: ProductsService, 
+  constructor(public productsservice: ProductsService, 
               private wishesservice: WishesService,
               private router: Router
               ) { }
@@ -32,6 +32,7 @@ export class CarComponent implements OnInit {
 
   /**update list product */
   uploadProducts(): void {
+    console.log(this.Products);
     this.productsservice.list().subscribe(
       data => {
         this.Products = data;
@@ -56,6 +57,7 @@ export class CarComponent implements OnInit {
       }
     );
     this.checkWishes();
+    console.log(this.Products)
   }
 
   /**dismiss wish */
@@ -92,12 +94,9 @@ export class CarComponent implements OnInit {
     );
   }
 
-  searchNavBar(searchValue: String): void {
-    this.productsservice.search(searchValue.toUpperCase()).subscribe(
-      data => {
-        this.Products = data;      
-      }
-    );
+  updateProductList(product: Product[]) {
+    this.Products = [...product]
+    console.log(this.Products)
   }
 
 }
