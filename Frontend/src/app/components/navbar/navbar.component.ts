@@ -29,8 +29,7 @@ export class NavbarComponent implements OnInit {
     var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
     this.carcomponent.productsservice.search(searchValue.toUpperCase()).subscribe(
           data => {
-            this.carcomponent.Products = data;     
-            console.log(this.carcomponent.Products); 
+            this.carcomponent.Products = data;    
           }
         );
     this.carcomponent.updateProductList(this.carcomponent.Products);

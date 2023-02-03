@@ -32,7 +32,6 @@ export class CarComponent implements OnInit {
 
   /**update list product */
   uploadProducts(): void {
-    console.log(this.Products);
     this.productsservice.list().subscribe(
       data => {
         this.Products = data;
@@ -57,7 +56,6 @@ export class CarComponent implements OnInit {
       }
     );
     this.checkWishes();
-    console.log(this.Products)
   }
 
   /**dismiss wish */
@@ -94,9 +92,8 @@ export class CarComponent implements OnInit {
     );
   }
 
-  updateProductList(product: Product[]) {
-    this.Products = [...product]
-    console.log(this.Products)
+  updateProductList(product: Product[]): void {
+    this.Products = [...product];
   }
 
 }
