@@ -2,7 +2,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Wishes } from 'src/app/models/wishes.model';
-import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/product/products.service';
 import { WishesService } from '../../services/wishes/wishes.service';
 import { Router } from '@angular/router';

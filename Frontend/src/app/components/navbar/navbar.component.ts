@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; // Service
 import { Router } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/product/products.service';
 
 @Component({
@@ -10,8 +9,6 @@ import { ProductsService } from 'src/app/services/product/products.service';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
-
-  Products: Product[] = [];
 
   constructor(private authService: AuthService,
               private productsservice: ProductsService,
@@ -32,10 +29,9 @@ export class NavbarComponent implements OnInit {
     var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
     this.productsservice.search(searchValue.toUpperCase()).subscribe(
           data => {
-            this.Products = data;    
+            this.productsservice.updateResultList(data);
           }
         );
-    this.productsservice.updateResultList(this.Products);
   }
 
 }
