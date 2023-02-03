@@ -12,7 +12,6 @@
                 </tr>
             </thead>
             <tbody *ngIf="Wisheses.length != 0">
-
                 <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
                     <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
                     <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">No hay stock</td>
