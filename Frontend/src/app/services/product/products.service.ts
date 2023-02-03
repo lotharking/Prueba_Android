@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 /**Rxjs */
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 /**Models */
 import { Product } from '../../models/product.model'
@@ -13,6 +13,9 @@ import { Product } from '../../models/product.model'
   providedIn: 'root'
 })
 export class ProductsService {
+  
+  private productstList: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
+  public productstList$: Observable<Product[]> = this.productstList.asObservable();
 
   products = 'http://localhost:8080/products/';
   header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
@@ -28,6 +31,11 @@ export class ProductsService {
   /**HttpRequest product unique */
   public search(value: string): Observable<any> {
     return this.httpClient.get<any>(this.products + `search/${value}`);
+  }
+  
+  /**Request for product filter and update new values */
+  updateResultList(updatedList: Product[]) {
+    this.productstList.next(updatedList);
   }
 
 }

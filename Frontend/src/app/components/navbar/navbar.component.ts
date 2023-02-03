@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; // Service
 import { Router } from '@angular/router';
-import { CarComponent } from '../car/car.component';
 import { Product } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/services/product/products.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   Products: Product[] = [];
 
   constructor(private authService: AuthService,
-              private carcomponent: CarComponent,
+              private productsservice: ProductsService,
               private router: Router) { }
   ngOnInit() {
   }
@@ -30,12 +30,12 @@ export class NavbarComponent implements OnInit {
 
   search(): void {
     var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
-    this.carcomponent.productsservice.search(searchValue.toUpperCase()).subscribe(
+    this.productsservice.search(searchValue.toUpperCase()).subscribe(
           data => {
             this.Products = data;    
           }
         );
-    // this.carcomponent.updateProductList(this.carcomponent.Products);
+    this.productsservice.updateResultList(this.Products);
   }
 
 }

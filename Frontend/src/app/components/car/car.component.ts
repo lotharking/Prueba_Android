@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class CarComponent implements OnInit {
 
-  Products: Product[] = [];
+  // Products: Product[] = [];
   Wisheses: Wishes[] = [];
   WishesesProblem: Wishes[] = [];
 
@@ -34,7 +34,7 @@ export class CarComponent implements OnInit {
   uploadProducts(): void {
     this.productsservice.list().subscribe(
       data => {
-        this.Products = data;
+        this.productsservice.updateResultList(data);
       }
     );
   }
@@ -90,10 +90,6 @@ export class CarComponent implements OnInit {
         this.WishesesProblem = data;
       }
     );
-  }
-
-  updateProductList(product: Product[]): void {
-    this.Products = [...product];
   }
 
 }
