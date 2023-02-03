@@ -12,20 +12,21 @@
                 </tr>
             </thead>
             <tbody *ngIf="Wisheses.length != 0">
-                        <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
-                            <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
-                            <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">No hay stock</td>
-                            <td *ngIf="wish.amount <= wish.product.stock && wish.amount != 0">{{wish.amount}}</td>
-                            <td *ngIf="wish.amount != 0"><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
-                            &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button>
-                            &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">Eliminar</button><br>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td colspan="3" *ngIf="Wisheses.length == 0">
-                            <div class="alert alert-danger text-center">Sin productos</div>
-                        </td>
-                    </tr>
+
+                <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
+                    <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
+                    <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">No hay stock</td>
+                    <td *ngIf="wish.amount <= wish.product.stock && wish.amount != 0">{{wish.amount}}</td>
+                    <td *ngIf="wish.amount != 0"><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
+                    &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button>
+                    &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">Eliminar</button><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" *ngIf="Wisheses.length == 0">
+                        <div class="alert alert-danger text-center">Sin productos</div>
+                    </td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>
