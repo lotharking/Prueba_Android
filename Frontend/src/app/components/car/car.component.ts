@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 
 export class CarComponent implements OnInit {
 
-  // Products: Product[] = [];
   Wisheses: Wishes[] = [];
   WishesesProblem: Wishes[] = [];
 
