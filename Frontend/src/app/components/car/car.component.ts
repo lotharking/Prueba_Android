@@ -22,6 +22,7 @@ export class CarComponent implements OnInit {
               private router: Router
               ) { }
 
+  /**Load init */
   ngOnInit(): void {
     this.uploadProducts();
     this.checkWishes();
