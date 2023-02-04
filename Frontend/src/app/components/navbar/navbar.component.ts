@@ -16,15 +16,18 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**Log Out */
   onLogout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
 
+  /**Redirect main page */
   send(): void {
     this.router.navigateByUrl('/');
   }
 
+  /**Search products and filter */
   search(): void {
     var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
     this.productsservice.search(searchValue.toUpperCase()).subscribe(
