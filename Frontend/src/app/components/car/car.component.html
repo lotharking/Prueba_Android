@@ -39,12 +39,12 @@
     <div class="row">
         <ng-container *ngIf="(productsservice.productstList$ | async) as productstList">
             <div class="col-md-3" *ngFor="let product of productstList; index as i">
-                <div class="card cardcustom">
+                <div class="card">
                     <img src="./assets/images/no-image.png" class="card-img-top">
                     <div class="card-body" style="text-align: center;">
                         <h6 class="card-title">{{product.name}}</h6>
-                        <p class="card-text-responsive">$&nbsp;{{product.price}}</p>
-                        <p class="card-text-responsive">Stock:&nbsp;{{product.stock}}</p>
+                        <p class="card-text">$&nbsp;{{product.price}}</p>
+                        <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
                     </div>
                     <div class="card-footer text-center">
                         <button class="btn btn-success w-100" (click)="add(product.id)">Agregar articulo</button>
