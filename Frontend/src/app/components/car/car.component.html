@@ -38,7 +38,7 @@
 
     <div class="row">
         <ng-container *ngIf="(productsservice.productstList$ | async) as productstList">
-            <div class="col-md-3" *ngFor="let product of productstList; index as i">
+            <div class="col-lg-3 col-md-4 col-sm" *ngFor="let product of productstList; index as i">
                 <div class="card card-margin">
                     <img src="./assets/images/no-image.png" class="card-img-top">
                     <div class="card-body" style="text-align: center;">
