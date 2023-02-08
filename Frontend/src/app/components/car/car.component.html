@@ -1,6 +1,6 @@
 <div class="container">
     <div style="float: right; margin: 5px 5px;">
-        <table class="table table-bordered" style="color: black;">
+        <table class="table table-bordered widhlist" style="color: black;">
             <thead>
                 <tr>
                     <th colspan="3" class="text-center">Lista de deseos &nbsp;<button class="btn btn-success" (click)="history()">Historial</button></th>
@@ -38,7 +38,7 @@
 
     <div class="row">
         <ng-container *ngIf="(productsservice.productstList$ | async) as productstList">
-            <div class="col-lg-3 col-md-4 col-sm" *ngFor="let product of productstList; index as i">
+            <div class="col-lg-3 col-md-4 col-sm cardproduct" *ngFor="let product of productstList; index as i">
                 <div class="card card-margin">
                     <img src="./assets/images/no-image.png" class="card-img-top">
                     <div class="card-body" style="text-align: center;">
