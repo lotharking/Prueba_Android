@@ -4,5 +4,5 @@
 
 ### Nota: Los archivos angular se encuentran dentro de la carpeta frontend en el proyecto ruta catalogo/src/main/frontend
 
- Los datos usados para la creacion de la DB se encuentran en el archivo data.qsl el cual se encargara de crearlos automaticamente, en caso que no los cree puede cambiar la propiedad spring.jpa.hibernate.ddl-auto del aplication.properties a create compilarl el proyecto y luego devolverlo a update para iniciar su ejecucion.
+ Los datos usados para la creacion de la DB se encuentran en el archivo data.qsl el cual se encargara de crearlos automaticamente, en caso que no los cree puede cambiar la propiedad "spring.jpa.hibernate.ddl-auto" a create  y comentar la linea del "spring.datasource.initialization-mode=always" del aplication.properties, compilar el proyecto y luego devolverlo a update para iniciar su ejecucion.
 
