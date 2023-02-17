@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,13 +19,17 @@ public class Product {
     private String name;
     private int price;
     private int stock;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Product(){}
 
-    public Product(String name, int price, int stock) {
+    public Product(String name, int price, int stock, Category category) {
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.category = category;
     }
 
     public int getId() { return id; }
@@ -41,5 +47,9 @@ public class Product {
     public int getstock() { return stock; }
 
     public void setstock(int stock) { this.stock = stock; }
+
+    public Category getCategory() { return category; }
+
+    public void setCategory(Category category) { this.category = category; }
     
 }
