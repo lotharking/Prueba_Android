@@ -2,6 +2,8 @@
 
 package com.test.sprongboot.catalogo.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.test.sprongboot.catalogo.entity.History;
@@ -46,7 +48,7 @@ public class WishController {
             String data = wishService.findIdByProduct(id);
             int data_out = Integer.valueOf(data);
             if (historyService.findByIdwish(data_out) != null)
-            historyService.save(new History(wishService.getById(data_out)));
+            	historyService.save(new History(wishService.getById(data_out)));
         }
         else{            
             String data = wishService.findIdByProduct(id);
@@ -56,6 +58,7 @@ public class WishController {
             wishService.save(wishService.getById(data_out));
         }
         List<Wish> list = wishService.findAll();
+        Collections.sort(list, Comparator.comparingInt(Wish::getId));
         
         return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
@@ -72,6 +75,7 @@ public class WishController {
             wishService.getById(data_out).setAmount(cont);
             wishService.save(wishService.getById(data_out));
         List<Wish> list = wishService.findAll();
+        Collections.sort(list, Comparator.comparingInt(Wish::getId));
 
         return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
@@ -84,6 +88,7 @@ public class WishController {
         wishService.getById(data_out).setAmount(0);
         wishService.save(wishService.getById(data_out));
         List<Wish> list = wishService.findAll();
+        Collections.sort(list, Comparator.comparingInt(Wish::getId));
         return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
 
@@ -91,6 +96,7 @@ public class WishController {
   @GetMapping(path = "/list")
   public ResponseEntity<List<Wish>> list(){
     List<Wish> list = wishService.findAll();
+    Collections.sort(list, Comparator.comparingInt(Wish::getId));
     return new ResponseEntity<List<Wish>>(list, HttpStatus.OK);
   }
     
