@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class CarComponent implements OnInit {
 
   Wisheses: Wishes[] = [];
-  WishesesProblem: Wishes[] = [];
 
   constructor(public productsservice: ProductsService, 
               private wishesservice: WishesService,
@@ -25,7 +24,6 @@ export class CarComponent implements OnInit {
   /**Load init */
   ngOnInit(): void {
     this.uploadProducts();
-    this.checkWishes();
     this.uploadWishes();
   }
 
@@ -54,7 +52,6 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
-    this.checkWishes();
   }
 
   /**dismiss wish */
@@ -64,7 +61,6 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
-    this.checkWishes();
   }
 
   /**delete wish */
@@ -74,21 +70,10 @@ export class CarComponent implements OnInit {
         this.Wisheses = data;
       }
     );
-    this.checkWishes();
   }
 
   /**Redirect to history */    
   history(): void {
     this.router.navigateByUrl('/historial');
   }
-
-  /**check wishes list */
-  checkWishes(): void {
-    this.wishesservice.list().subscribe(
-      data => {
-        this.WishesesProblem = data;
-      }
-    );
-  }
-
 }
