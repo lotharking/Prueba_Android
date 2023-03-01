@@ -72,8 +72,8 @@ public class WishController {
         if (cont<0 || cont==0){
             cont = 0;
         } 
-            wishService.getById(data_out).setAmount(cont);
-            wishService.save(wishService.getById(data_out));
+        wishService.getById(data_out).setAmount(cont);
+        wishService.save(wishService.getById(data_out));
         List<Wish> list = wishService.findAll();
         Collections.sort(list, Comparator.comparingInt(Wish::getId));
 
