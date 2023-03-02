@@ -49,6 +49,7 @@ export class NavbarComponent implements OnInit {
         this.categories = data;
       }
     );
+    console.log(this.categories);
   }
 
 }
