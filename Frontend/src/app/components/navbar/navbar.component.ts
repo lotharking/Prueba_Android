@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; // Service
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/product/products.service';
+import { Category } from 'src/app/models/category.model';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +12,14 @@ import { ProductsService } from 'src/app/services/product/products.service';
 })
 export class NavbarComponent implements OnInit {
 
+  categories: Category[] = [];
+
   constructor(private authService: AuthService,
               private productsservice: ProductsService,
+              private categoryservice: CategoryService,
               private router: Router) { }
   ngOnInit() {
+    this.updateCategories();
   }
 
   /**Log Out */
@@ -35,6 +41,14 @@ export class NavbarComponent implements OnInit {
             this.productsservice.updateResultList(data);
           }
         );
+  }
+
+  updateCategories(): void {
+    this.categoryservice.list().subscribe(
+      data => {
+        this.categories = data;
+      }
+    );
   }
 
 }
