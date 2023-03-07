@@ -12,6 +12,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class NavbarComponent implements OnInit {
 
+  searchValue = '';
   categories: Category[] = [];
 
   constructor(private authService: AuthService,
@@ -33,20 +34,18 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  /**Search products and filter */
-  search(): void {
-    var searchValue = (<HTMLInputElement>document.getElementById("uniqueID")).value;
-    this.productsservice.search(searchValue.toUpperCase()).subscribe(
-          data => {
-            this.productsservice.updateResultList(data);
-          }
-        );
-  }
-
   updateCategories(): void {
     this.categoryservice.list().subscribe(
       data => {
         this.categories = data;
+      }
+    );
+  }
+
+  filter(value: String): void {  
+    this.productsservice.search(value.toUpperCase()).subscribe(
+      data => {
+        this.productsservice.updateResultList(data);
       }
     );
   }
