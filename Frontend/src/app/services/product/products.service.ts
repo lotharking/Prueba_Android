@@ -33,6 +33,11 @@ export class ProductsService {
     return this.httpClient.get<any>(this.products + `search/${value}`);
   }
   
+  /**HttpRequest product with category */
+  public searchByCategory(value: number): Observable<any> {
+    return this.httpClient.get<any>(this.products + `searchCategory/${value}`);
+  }
+  
   /**Request for product filter and update new values */
   updateResultList(updatedList: Product[]) {
     this.productstList.next(updatedList);

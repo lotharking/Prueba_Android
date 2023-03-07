@@ -4,7 +4,7 @@
       Compras
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#" (click)="filter(category.name)" *ngFor="let category of categories; index as i">{{ category.name }}</a>
+      <a class="dropdown-item" href="#" (click)="selectedCategory(category.id)" *ngFor="let category of categories; index as i">{{ category.name }}</a>
     </div>
   </div>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

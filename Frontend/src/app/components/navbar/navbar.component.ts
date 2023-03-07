@@ -50,4 +50,12 @@ export class NavbarComponent implements OnInit {
     );
   }
 
+  selectedCategory(id: number): void {
+    this.productsservice.searchByCategory(id).subscribe(
+      data => {
+        this.productsservice.updateResultList(data);
+      }
+    );    
+  }
+
 }
