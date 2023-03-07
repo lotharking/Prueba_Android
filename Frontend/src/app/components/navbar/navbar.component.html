@@ -4,7 +4,7 @@
       Compras
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#" *ngFor="let category of categories; index as i">{{ category.name }}</a>
+      <a class="dropdown-item" href="#" (click)="filter(category.name)" *ngFor="let category of categories; index as i">{{ category.name }}</a>
     </div>
   </div>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,8 +13,8 @@
 
   <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">        
     <form class="form-inline my-2 my-lg-0 navbarform">
-        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" id="uniqueID" value="" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type= "button" (click)="search()">Busqueda</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" #searchInput aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type= "button" (click)="filter(searchInput.value)">Busqueda</button>
     </form>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
