@@ -6,7 +6,9 @@ import com.test.sprongboot.catalogo.entity.Product;
 
 public interface ProductService {
 
-    List<Product> findAllByParam(String value);
+    List<Product> findAllByName(String value);
+    
+    List<Product> findAllByCategory(Integer value);
 
     List<Product> findAllByParamVoid();
 

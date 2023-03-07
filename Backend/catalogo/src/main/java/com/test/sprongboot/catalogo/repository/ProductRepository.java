@@ -17,7 +17,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     /**Search from product table */
     @Query(value = "SELECT * FROM products where name like CONCAT('%',:value,'%')", 
        nativeQuery = true)
-    List<Product> findAllByParam(@Param("value") String value);
+    List<Product> findAllByName(@Param("value") String value);
+
+    /**Search from product table by id category*/
+    @Query(value = "SELECT * FROM products where category_id = :value", 
+       nativeQuery = true)
+    List<Product> findAllByCategory(@Param("value") Integer value);
 
     /**Search from product table with parameters */
     @Query(value = "SELECT * FROM products where name like '%%'", 

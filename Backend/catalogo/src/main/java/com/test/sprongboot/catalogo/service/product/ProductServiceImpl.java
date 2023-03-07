@@ -15,8 +15,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository repository;
 
     @Override
-    public List<Product> findAllByParam(String value) {
-        return repository.findAllByParam(value);
+    public List<Product> findAllByName(String value) {
+        return repository.findAllByName(value);
     }
 
     @Override
@@ -33,5 +33,10 @@ public class ProductServiceImpl implements ProductService {
     public Product getById(int id) {
         return repository.getById(id);
     }
+
+	@Override
+	public List<Product> findAllByCategory(Integer value) {
+		return repository.findAllByCategory(value);
+	}
     
 }

@@ -34,7 +34,14 @@ public class ProductController {
   /**search product unique */
   @GetMapping(path = "/search/{value}")
   public ResponseEntity<List<Product>> search(@PathVariable("value") String value){
-    List<Product> list = productService.findAllByParam(value);
+    List<Product> list = productService.findAllByName(value);
+    return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
+  }
+
+  /**search product unique */
+  @GetMapping(path = "/searchCategory/{value}")
+  public ResponseEntity<List<Product>> searchCategory(@PathVariable("value") Integer value){
+    List<Product> list = productService.findAllByCategory(value);
     return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
   }
 
