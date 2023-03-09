@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
+import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.s
     CarComponent,
     Page404Component,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarbeginComponent
   ],
   imports: [
     BrowserModule,
