@@ -12,7 +12,6 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class NavbarComponent implements OnInit {
 
-  searchValue = '';
   categories: Category[] = [];
 
   constructor(private authService: AuthService,
