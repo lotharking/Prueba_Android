@@ -41,14 +41,6 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-  filter(value: String): void {  
-    this.productsservice.search(value.toUpperCase()).subscribe(
-      data => {
-        this.productsservice.updateResultList(data);
-      }
-    );
-  }
-
   selectedCategory(id: number): void {
     this.productsservice.searchByCategory(id).subscribe(
       data => {

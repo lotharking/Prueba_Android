@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/product/products.service';
 
 @Component({
   selector: 'app-navbarbegin',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarbeginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productsservice: ProductsService,) { }
 
   ngOnInit(): void {
   }
+
+  filter(value: String): void {  
+    this.productsservice.search(value.toUpperCase()).subscribe(
+      data => {
+        this.productsservice.updateResultList(data);
+      }
+    );
+  }
+  
 
 }

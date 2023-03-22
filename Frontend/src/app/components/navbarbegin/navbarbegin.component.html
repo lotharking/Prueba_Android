@@ -5,6 +5,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="form-inline my-2 my-lg-0 navbarform">
+            <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" #searchInput aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type= "button" (click)="filter(searchInput.value)">Busqueda</button>
+        </form>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
