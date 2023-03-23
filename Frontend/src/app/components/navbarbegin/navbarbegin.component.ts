@@ -31,8 +31,8 @@ export class NavbarbeginComponent implements OnInit {
     .then(function (response) {
         return response.json();
     })
-    .then(function (payload) {
-        console.log(payload.location.country.name + ', ' + payload.location.city);
+    .then( (payload) => {
+        this.pais = payload.location.country.name;
     });
   }
   
