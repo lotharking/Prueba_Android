@@ -1,30 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo"></a>
-      <div>
-        <p>Enviar a</p>
-        <p>{{ pais }}</p>
+  <div class="container-fluid">
+      <div class="brand-and-send-to">
+          <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo"></a>
+          <div class="send-to">
+              <p>Enviar a</p>
+              <p>{{ pais }}</p>
+          </div>
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <form class="form-inline my-2 my-lg-0 navbarform">
-            <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" #searchInput aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type= "button" (click)="filter(searchInput.value)">Busqueda</button>
-        </form>
-        <ul class="navbar-nav ms-auto">
+      <form class="form-inline my-2 my-lg-0 navbarform">
+          <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" #searchInput aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="filter(searchInput.value)">Busqueda</button>
+      </form>
+      <ul class="navbar-nav ms-auto" id="menu-items">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#">Contact</a>
           </li>
-        </ul>
-      </div>
-    </div>
+      </ul>
+  </div>
 </nav>
-  
