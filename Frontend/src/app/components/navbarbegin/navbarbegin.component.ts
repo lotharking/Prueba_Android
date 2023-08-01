@@ -32,7 +32,11 @@ export class NavbarbeginComponent implements OnInit {
         return response.json();
     })
     .then( (payload) => {
+      if (payload && payload.location && payload.location.country && payload.location.country.name) {
         this.pais = payload.location.country.name;
+      } else {
+        this.pais = 'Colombia'; // Establecer "Colombia" como valor predeterminado
+      }
     });
   }
   
