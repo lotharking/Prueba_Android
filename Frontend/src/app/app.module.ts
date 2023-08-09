@@ -23,7 +23,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -58,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     IgxCardModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AuthService, AuthGuard, CarComponent],
   bootstrap: [AppComponent]

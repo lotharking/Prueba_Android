@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/services/product/products.service';
 export class NavbarbeginComponent implements OnInit {
 
   country: String = '';
+  searchValue: string = '';
 
   constructor(private productsservice: ProductsService,
               private http: HttpClient) { }
@@ -18,7 +19,7 @@ export class NavbarbeginComponent implements OnInit {
     this.getCountry();
   }
 
-  filter(value: String): void {  
+  filter(value: string): void {
     this.productsservice.search(value.toUpperCase()).subscribe(
       data => {
         this.productsservice.updateResultList(data);
