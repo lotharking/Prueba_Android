@@ -3,33 +3,33 @@
         <table class="table table-bordered widhlist" style="color: black;">
             <thead>
                 <tr>
-                    <th colspan="3" class="text-center">Lista de deseos &nbsp;<button class="btn btn-success" (click)="history()">Historial</button></th>
+                    <th colspan="3" class="text-center">{{ 'wishlistTitle' | translate }} &nbsp;<button class="btn btn-success" (click)="history()">{{ 'historyButton' | translate }}</button></th>
                 </tr>
                 <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Opciones</th>
+                    <th>{{ 'productHeader' | translate }}</th>
+                    <th>{{ 'quantityHeader' | translate }}</th>
+                    <th>{{ 'optionsHeader' | translate }}</th>
                 </tr>
             </thead>
             <tbody *ngIf="Wisheses.length != 0">
                 <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
                     <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
-                    <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">No hay stock</td>
+                    <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">{{ 'dontStock' | translate }}</td>
                     <td *ngIf="wish.amount <= wish.product.stock && wish.amount != 0">{{wish.amount}}</td>
                     <td *ngIf="wish.amount != 0"><button class="btn btn-success" (click)="add(wish.product.id)">+</button>
                     &nbsp;<button class="btn btn-success" (click)="less(wish.product.id)">-</button>
-                    &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">Eliminar</button><br>
+                    &nbsp;<button class="btn btn-danger" (click)="delete(wish.product.id)">{{ 'dontStock' | translate }}</button><br>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3" *ngIf="Wisheses.length == 0">
-                        <div class="alert alert-danger text-center">Sin productos</div>
+                        <div class="alert alert-danger text-center">{{ 'noProducts' | translate }}</div>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Selecciona tus deseos</td>
+                    <td colspan="3">{{ 'selectWishes' | translate }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -47,7 +47,7 @@
                         <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
                     </div>
                     <div class="card-footer text-center custom-card">
-                        <button class="btn btn-success w-100" (click)="add(product.id)">Agregar</button>
+                        <button class="btn btn-success w-100" (click)="add(product.id)">{{ 'add' | translate }}</button>
                     </div>
                 </div>
             </div>

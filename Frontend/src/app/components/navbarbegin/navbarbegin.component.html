@@ -3,13 +3,13 @@
       <div class="brand-and-send-to">
           <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo"></a>
           <div class="send-to">
-              <p>Enviar a</p>
-              <p>{{ pais }}</p>
+              <p>{{ 'sendToMessage' | translate }}</p>
+              <p>{{ country }}</p>
           </div>
       </div>
       <form class="form-inline my-2 my-lg-0 navbarform">
-            <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" #searchInput aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="filter(searchInput.value)">Busqueda</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="{{ 'search' | translate }}" #searchInput aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="filter(searchInput.value)">{{ 'search' | translate }}</button>
       </form>
       <ul class="navbar-nav ms-auto" id="menu-items">
           <li class="nav-item">

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 /**HttpRequest */
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 /**Material desing */
 import { MatIconModule } from '@angular/material/icon'
@@ -26,6 +26,12 @@ import { AuthGuard } from './guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -43,6 +49,13 @@ import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     IgxCardModule,
     MatIconModule,
     ReactiveFormsModule

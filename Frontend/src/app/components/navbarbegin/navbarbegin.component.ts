@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/services/product/products.service';
 })
 export class NavbarbeginComponent implements OnInit {
 
-  pais: String = '';
+  country: String = '';
 
   constructor(private productsservice: ProductsService,
               private http: HttpClient) { }
@@ -33,9 +33,9 @@ export class NavbarbeginComponent implements OnInit {
     })
     .then( (payload) => {
       if (payload && payload.location && payload.location.country && payload.location.country.name) {
-        this.pais = payload.location.country.name;
+        this.country = payload.location.country.name;
       } else {
-        this.pais = 'Colombia'; // Establecer "Colombia" como valor predeterminado
+        this.country = 'Colombia'; // Establecer "Colombia" como valor predeterminado
       }
     });
   }
