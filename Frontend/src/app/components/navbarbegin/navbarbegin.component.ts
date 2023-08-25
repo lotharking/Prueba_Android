@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ProductsService } from 'src/app/services/product/products.service';
 
 @Component({
@@ -11,12 +12,24 @@ export class NavbarbeginComponent implements OnInit {
 
   country: String = '';
   searchValue: string = '';
+  supportedLanguages: string[];
+  currentLang: string;
 
   constructor(private productsservice: ProductsService,
-              private http: HttpClient) { }
-
+              private http: HttpClient,
+              private translate: TranslateService) {
+                this.supportedLanguages = this.translate.getLangs();
+                this.currentLang = this.translate.currentLang || this.translate.defaultLang;
+            }
+            
   ngOnInit(): void {
     this.getCountry();
+  }
+  
+  changeLanguage(lang: string) {
+    console.log(this.translate.getLangs());
+    this.translate.use(lang);
+    this.currentLang = lang;
   }
 
   filter(value: string): void {
