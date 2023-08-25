@@ -25,7 +25,6 @@ export class NavbarbeginComponent implements OnInit {
   }
   
   changeLanguage(lang: string) {
-    console.log(this.translate.getLangs());
     this.translate.use(lang);
     this.currentLang = lang;
   }

@@ -1,8 +1,8 @@
 {
     "sendToMessage": "Enviar a",
     "contactWithUs": "Contactenos",
-    "Logout": "Salir",
-    "Shopping": "Compras",
+    "logout": "Salir",
+    "shopping": "Compras",
     "search": "Busqueda",
     "wishlistTitle": "Lista de deseos",
     "historyButton": "Historial",

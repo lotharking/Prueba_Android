@@ -17,6 +17,11 @@ export class AppComponent {
   /** Default values for app */
   initializeApp() {
     this.translate.addLangs(["en", "es"]);
+    const browserLang = this.translate.getBrowserLang();
+    if (this.translate.getLangs().includes( browserLang )) {
+      this.translate.setDefaultLang(browserLang);
+      this.translate.use( browserLang )
+    }
   };
 
   /** If logged show navbar */
