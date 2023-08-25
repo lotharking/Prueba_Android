@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductsService } from 'src/app/services/product/products.service';
@@ -16,7 +15,6 @@ export class NavbarbeginComponent implements OnInit {
   currentLang: string;
 
   constructor(private productsservice: ProductsService,
-              private http: HttpClient,
               private translate: TranslateService) {
                 this.supportedLanguages = this.translate.getLangs();
                 this.currentLang = this.translate.currentLang || this.translate.defaultLang;
