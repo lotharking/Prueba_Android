@@ -28,6 +28,7 @@ import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.s
 import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +44,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     Page404Component,
     ContactComponent,
     LoginComponent,
-    NavbarbeginComponent
+    NavbarbeginComponent,
+    WhatsappButtonComponent
   ],
   imports: [
     BrowserModule,
