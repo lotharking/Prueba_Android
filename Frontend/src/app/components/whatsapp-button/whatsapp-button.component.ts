@@ -12,7 +12,7 @@ export class WhatsappButtonComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<string>('/api/whatsapp-link').subscribe(link => {
+    this.http.get<string>('/messages/whatsapp-link').subscribe(link => {
       this.whatsappLink = link;
     });
   }
