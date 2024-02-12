@@ -1,5 +1,5 @@
 $navbar-bg-color: #f8f9fa;
-$navbar-padding: 5px 20px; // Adjusted padding
+$navbar-padding: 5px 20px;
 $dropdown-bg-color: #fff;
 $dropdown-menu-padding: 0.5rem 0;
 $dropdown-menu-margin: 0.125rem 0 0;
@@ -61,15 +61,15 @@ $dropdown-menu-link-padding: 0.25rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 100%; // Adjusted width
+    width: 100%;
   }
 
   .d-flex {
     display: flex;
-    gap: 10px; // Adjusted gap
+    gap: 10px;
   }
 
   .nav-link {
-    margin-right: 10px; // Adjusted margin
+    margin-right: 10px;
   }
 }
