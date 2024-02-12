@@ -8,6 +8,29 @@
         <a *ngFor="let category of categories; index as i" href="#" (click)="selectedCategory(category.id)" class="dropdown-item">{{ category.name }}</a>
       </div>
     </div>
+
+    <div class="brand-and-send-to">
+        <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo"></a>
+        <div class="send-to">
+            <p>{{ 'sendToMessage' | translate }}</p>
+            <p>{{ country }}</p>
+        </div>
+    </div>
+    <form class="form-inline my-2 my-lg-0 navbarform">
+        <input class="form-control" type="text" placeholder="{{ 'search' | translate }}" aria-label="Search" name="search" [(ngModel)]="searchValue" (input)="filter(searchValue)">
+    </form>
+    <div class="navbar-nav ms-auto" id="menu-items">
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ currentLang | uppercase }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                <div *ngFor="let lang of supportedLanguages">
+                    <a class="dropdown-item" href="#" (click)="changeLanguage(lang)">{{ lang | uppercase }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
   
     <div class="ml-auto">
       <div class="d-flex">

@@ -24,8 +24,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
-import { NavbarbeginComponent } from './components/navbarbegin/navbarbegin.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -43,7 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     Page404Component,
     ContactComponent,
     LoginComponent,
-    NavbarbeginComponent
   ],
   imports: [
     BrowserModule,
