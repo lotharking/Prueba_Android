@@ -1,0 +1,125 @@
+$primary-color: #007bff;
+$secondary-color: #dc3545;
+$text-color: #212529;
+$bg-color: #f8f9fa;
+$font-family: 'Arial', sans-serif;
+
+body {
+    margin: 0;
+    font-family: $font-family;
+}
+
+.navbar {
+    background-color: $bg-color;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #logo {
+        max-width: 100px;
+        height: auto;
+    }
+}
+
+.brand-and-send-to {
+    display: flex;
+    align-items: center;
+
+    .send-to {
+        margin-left: 20px;
+    }
+}
+
+.navbarform {
+    flex-grow: 1;
+    margin: 0 20px;
+
+    .form-control {
+        width: 100%;
+    }
+}
+
+#menu-items {
+    display: flex;
+    align-items: center;
+
+    .nav-item {
+        margin-right: 15px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 10rem;
+            padding: 0.5rem 0;
+            margin: 0.125rem 0 0;
+            font-size: 1rem;
+            color: $text-color;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 0.25rem;
+
+            a {
+                display: block;
+                padding: 0.25rem 1.5rem;
+                clear: both;
+                font-weight: 400;
+                color: $text-color;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .nav-item {
+        margin-right: 15px;
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+
+        &:hover {
+            background-color: darken($secondary-color, 10%);
+            border-color: darken($secondary-color, 10%);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-and-send-to {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .send-to {
+            margin: 10px 0 0;
+        }
+    }
+
+    .navbarform {
+        margin: 10px 0;
+    }
+
+    #menu-items {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .nav-item {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+}

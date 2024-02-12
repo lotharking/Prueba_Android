@@ -5,7 +5,7 @@ import { ProductsService } from 'src/app/services/product/products.service';
 @Component({
   selector: 'app-navbarbegin',
   templateUrl: './navbarbegin.component.html',
-  styleUrls: ['./navbarbegin.component.sass']
+  styleUrls: ['./navbarbegin.component.scss']
 })
 export class NavbarbeginComponent implements OnInit {
 

@@ -1,26 +1,23 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
-  <div class="dropdown">
-    <a class="navbar-brand buyclass dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ 'shopping' | translate }}
-    </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#" (click)="selectedCategory(category.id)" *ngFor="let category of categories; index as i">{{ category.name }}</a>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="dropdown">
+      <label for="dropdownToggle" class="navbar-brand buyclass" role="button">
+        {{ 'shopping' | translate }}
+      </label>
+      <input type="checkbox" id="dropdownToggle" class="dropdown-toggle">
+      <div class="dropdown-menu">
+        <a *ngFor="let category of categories; index as i" href="#" (click)="selectedCategory(category.id)" class="dropdown-item">{{ category.name }}</a>
+      </div>
     </div>
-  </div>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">        
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+  
+    <div class="ml-auto">
+      <div class="d-flex">
         <a class="nav-link" href="/contactenos">{{ 'contactWithUs' | translate }}</a>
-      </li>            
-    </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <button type="button" (click)="onLogout()" class="btn btn-danger" >{{ 'logout' | translate }}</button>
-      </li>
-  </ul>
-  </div>
-</nav>
+        <button type="button" (click)="onLogout()" class="btn btn-danger">{{ 'logout' | translate }}</button>
+      </div>
+    </div>
+  
+    <button class="navbar-toggler" type="button" id="navbarToggle" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  
