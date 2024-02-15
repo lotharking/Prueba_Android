@@ -14,7 +14,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class NavbarComponent implements OnInit {
 
   categories: Category[] = [];
-  country: String = '';
   searchValue: string = '';
   supportedLanguages: string[];
   currentLang: string;
@@ -29,7 +28,6 @@ export class NavbarComponent implements OnInit {
               }
   ngOnInit() {
     this.updateCategories();
-    this.getCountry();
   }
 
   /**Log Out */
@@ -70,20 +68,6 @@ export class NavbarComponent implements OnInit {
         this.productsservice.updateResultList(data);
       }
     );
-  }
-
-  getCountry(): void {
-    fetch('https://api.ipregistry.co/?key=tryout')
-    .then(function (response) {
-        return response.json();
-    })
-    .then( (payload) => {
-      if (payload && payload.location && payload.location.country && payload.location.country.name) {
-        this.country = payload.location.country.name;
-      } else {
-        this.country = 'Colombia'; // Establecer "Colombia" como valor predeterminado
-      }
-    });
   }
 
 }
