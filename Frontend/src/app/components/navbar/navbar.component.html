@@ -17,8 +17,8 @@
       </div>
     </div>
     <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo" width="100" height="auto"></a>
-    <form class="d-flex">
-      <input class="form-control me-2" type="text" placeholder="{{ 'search' | translate }}" aria-label="Search" name="search" [(ngModel)]="searchValue" (input)="filter(searchValue)">
+    <form class="d-flex col-lg-6">
+      <input class="form-control me-2 w-100" type="text" placeholder="{{ 'search' | translate }}" aria-label="Search" name="search" [(ngModel)]="searchValue" (input)="filter(searchValue)">
     </form>
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
