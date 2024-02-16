@@ -28,7 +28,7 @@
         <li *ngFor="let lang of supportedLanguages"><a class="dropdown-item" (click)="changeLanguage(lang)">{{ lang | uppercase }}</a></li>
       </ul>
     </div>
-    <a class="navbar-brand" href="/contactenos">{{ 'contactWithUs' | translate }}</a>
+    <a class="navbar-brand" href="/contactWithUs">{{ 'contactWithUs' | translate }}</a>
     <button type="button" (click)="onLogout()" class="btn btn-danger">{{ 'logout' | translate }}</button>
   </div>
 </nav>

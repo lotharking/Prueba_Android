@@ -74,6 +74,6 @@ export class CarComponent implements OnInit {
 
   /**Redirect to history */    
   history(): void {
-    this.router.navigateByUrl('/historial');
+    this.router.navigateByUrl('/record');
   }
 }
