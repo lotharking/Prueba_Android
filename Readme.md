@@ -1,8 +1,44 @@
 ## Lista de deseos
+Este proyecto utiliza Gradle como sistema de construcción, Java Spring Boot para el backend y Angular para el frontend. La aplicación se centra en proporcionar una interfaz web para que los usuarios gestionen sus listas de deseos.
 
-## Pagina web para gestionar una lista de deseos por parte de un usuario
+## Estructura del Proyecto
+El proyecto se organiza de la siguiente manera:
 
-### Nota: Los archivos angular se encuentran dentro de la carpeta frontend en el proyecto ruta catalogo/src/main/frontend
+### Backend
+### Frontend
 
- Los datos usados para la creacion de la DB se encuentran en el archivo data.qsl el cual se encargara de crearlos automaticamente, en caso que no los cree puede cambiar la propiedad "spring.jpa.hibernate.ddl-auto" a create  y comentar la linea del "spring.datasource.initialization-mode=always" del aplication.properties, compilar el proyecto y luego devolverlo a update para iniciar su ejecucion.
+## Configuración de la Base de Datos
+Los datos necesarios para la creación de la base de datos se encuentran en el archivo data.sql. Para facilitar la creación automática, se ha configurado el proyecto con las siguientes propiedades en application.properties
+```properties
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.initialization-mode=always
+```
+En caso de que la base de datos no se cree automáticamente, puede cambiar la propiedad `spring.jpa.hibernate.ddl-auto` a create, comentar la línea `spring.datasource.initialization-mode=always`, compilar el proyecto y luego devolverlo a update para iniciar su ejecución.
 
+### Configuración de Versiones
+Este proyecto fue construido con las siguientes versiones:
+
+- Java: 17.0.8
+- Gradle: 7.3
+- Angular: 13.0.2
+
+### Ejecución del Proyecto
+#### Backend (Spring Boot)
+Asegúrese de tener Java 17 y Gradle 7.3 instalados. Desde la carpeta raíz del proyecto, ejecute el siguiente comando para iniciar el backend:
+```bash
+gradle bootRun
+```
+
+#### Frontend (Angular)
+Asegúrese de tener Node.js y npm instalados. Navegue a la carpeta frontend desde la raíz del proyecto y ejecute los siguientes comandos:
+```bash
+npm install
+npm run start
+```
+Con estos pasos, debería poder ejecutar tanto el backend como el frontend de su proyecto de Lista de Deseos. ¡Disfruta desarrollando!
+
+### Notas Adicionales
+- Asegúrese de tener las dependencias necesarias especificadas en el archivo `build.gradle`.
+- Este proyecto utiliza Gradle como sistema de construcción, asegúrese de tenerlo instalado.
+
+Con esta estructura y configuración, deberías estar listo para comenzar con tu proyecto de Lista de Deseos utilizando Java Spring Boot y Angular. ¡Buena suerte!
