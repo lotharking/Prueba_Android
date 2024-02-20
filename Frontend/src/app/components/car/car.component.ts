@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.sass']
+  styleUrls: ['./car.component.scss']
 })
 
 export class CarComponent implements OnInit {
@@ -34,6 +34,11 @@ export class CarComponent implements OnInit {
         this.productsservice.updateResultList(data);
       }
     );
+  }
+
+  /*Get wish */
+  getWishByName(productName: string): Wishes {
+    return this.Wisheses.find(wish => wish.product.name === productName && wish.amount!=0);
   }
 
   /**update list wish */
