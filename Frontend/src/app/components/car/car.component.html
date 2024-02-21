@@ -49,7 +49,7 @@
                         <ng-container *ngIf="!getWishByName(product.name)">
                             <button class="btn btn-success w-100" (click)="add(product.id)">{{ 'add' | translate }}</button>
                         </ng-container>
-                        <table class="table table-borderless widhlist" style="table-layout: fixed;">
+                        <table class="table table-borderless widhlist custom-table" style="table-layout: fixed;">
                             <tbody>
                                 <tr class="text-center" *ngIf="getWishByName(product.name)">
                                     <td><button class="btn btn-success" *ngIf="getWishByName(product.name).amount < product.stock" (click)="add(product.id)">+</button></td>
