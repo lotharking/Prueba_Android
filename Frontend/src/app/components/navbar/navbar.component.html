@@ -5,30 +5,30 @@
     </button>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ 'shopping' | translate }}</h5>
+        <h5 class="offcanvas-title text-setting" id="offcanvasNavbarLabel">{{ 'shopping' | translate }}</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item" *ngFor="let category of categories; index as i">
-            <a class="nav-link active" (click)="selectedCategory(category.id)" aria-current="page" href="#">{{ category.name }}</a>
+            <a class="nav-link active text-setting" (click)="selectedCategory(category.id)" aria-current="page" href="#">{{ category.name }}</a>
           </li>
         </ul>
       </div>
     </div>
     <a class="navbar-brand" href="/"><img src="./assets/images/logo.jpg" alt="Logo" id="logo" width="100" height="auto"></a>
     <form class="d-flex col-lg-6">
-      <input class="form-control me-2 w-100" type="text" placeholder="{{ 'search' | translate }}" aria-label="Search" name="search" [(ngModel)]="searchValue" (input)="filter(searchValue)">
+      <input class="form-control me-2 w-100 text-setting" type="text" placeholder="{{ 'search' | translate }}" aria-label="Search" name="search" [(ngModel)]="searchValue" (input)="filter(searchValue)">
     </form>
     <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-setting" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         {{ currentLang | uppercase }}
       </a>
       <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-        <li *ngFor="let lang of supportedLanguages"><a class="dropdown-item" (click)="changeLanguage(lang)">{{ lang | uppercase }}</a></li>
+        <li *ngFor="let lang of supportedLanguages"><a class="dropdown-item text-setting" (click)="changeLanguage(lang)">{{ lang | uppercase }}</a></li>
       </ul>
     </div>
-    <a class="navbar-brand" href="/contactWithUs">{{ 'contactWithUs' | translate }}</a>
-    <button type="button" (click)="onLogout()" class="btn btn-danger">{{ 'logout' | translate }}</button>
+    <a class="navbar-brand text-setting" href="/contactWithUs">{{ 'contactWithUs' | translate }}</a>
+    <button type="button" (click)="onLogout()" class="btn btn-danger text-setting">{{ 'logout' | translate }}</button>
   </div>
 </nav>
