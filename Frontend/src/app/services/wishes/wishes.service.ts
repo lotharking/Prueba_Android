@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Wishes } from 'src/app/models/wishes.model';
 
 @Injectable({
@@ -9,6 +9,10 @@ import { Wishes } from 'src/app/models/wishes.model';
 export class WishesService {
 
   wish = 'http://localhost:8080/wish/';
+
+  /** Create observable to share productstList array info by subscribe */
+  private wishesList: BehaviorSubject<Wishes[]> = new BehaviorSubject<Wishes[]>(null);
+  public wishesSubscribe: Observable<Wishes[]> = this.wishesList.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,6 +37,19 @@ export class WishesService {
   public list(): Observable<Wishes[]> {
     return this.httpClient.get<Wishes[]>(this.wish + 'list', 
           { headers : this.header });
+  }
+  
+  /**Request for wish filter and update new values */
+  updateResultList(updatedList: Wishes[]) {
+    this.wishesList.next(updatedList);
+  }
+
+  getWishByName(name: String) {
+    try {
+      return this.wishesList.value.find(wish => wish.product.name === name);
+    } catch (error) {
+      return null;
+    }
   }
 
 }

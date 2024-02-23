@@ -5,6 +5,7 @@ import { ProductsService } from 'src/app/services/product/products.service';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { TranslateService } from '@ngx-translate/core';
+import { WishesService } from 'src/app/services/wishes/wishes.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private productsservice: ProductsService,
+              public wishesservice: WishesService,
               private categoryservice: CategoryService,
               private translate: TranslateService,
               private router: Router) {
@@ -68,6 +70,20 @@ export class NavbarComponent implements OnInit {
         this.productsservice.updateResultList(data);
       }
     );
+  }
+
+  /**delete wish */
+  delete(id: number=0): void {
+    this.wishesservice.delete(id).subscribe(
+      data => {
+        this.wishesservice.updateResultList(data);
+      }
+    );
+  }
+
+  /**Redirect to history */    
+  history(): void {
+    this.router.navigateByUrl('/record');
   }
 
 }

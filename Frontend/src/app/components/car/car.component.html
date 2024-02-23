@@ -1,59 +1,22 @@
 <div class="container">
-    <div style="float: right; margin: 5px 5px;">
-        <table class="table table-bordered widhlist" style="color: black;">
-            <thead>
-                <tr>
-                    <th colspan="3" class="text-center">{{ 'wishlistTitle' | translate }} &nbsp;<button class="btn btn-success" (click)="history()">{{ 'historyButton' | translate }}</button></th>
-                </tr>
-                <tr>
-                    <th>{{ 'productHeader' | translate }}</th>
-                    <th>{{ 'quantityHeader' | translate }}</th>
-                    <th>{{ 'optionsHeader' | translate }}</th>
-                </tr>
-            </thead>
-            <tbody *ngIf="Wisheses.length != 0">
-                <tr class="text-center" *ngFor="let wish of Wisheses; index as i">
-                    <td *ngIf="wish.amount != 0">{{wish.product.name}}</td>
-                    <td *ngIf="wish.amount > wish.product.stock && wish.amount != 0" style="color: red;">{{ 'dontStock' | translate }}</td>
-                    <td *ngIf="wish.amount <= wish.product.stock && wish.amount != 0">{{wish.amount}}</td>
-                    <td *ngIf="wish.amount != 0">
-                    <button class="btn btn-danger" (click)="delete(wish.product.id)">{{ 'delete' | translate }}</button><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" *ngIf="Wisheses.length == 0">
-                        <div class="alert alert-danger text-center">{{ 'noProducts' | translate }}</div>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">{{ 'selectWishes' | translate }}</td>
-                </tr>
-            </tfoot>
-        </table>
-        
-    </div>
 
     <div class="row">
         <ng-container *ngIf="(productsservice.productstList$ | async) as productstList">
             <div class="col-lg-3 col-md-4 col-sm cardproduct" *ngFor="let product of productstList; index as i">
                 <div class="card card-margin">
                     <img src="./assets/images/no-image.png" class="card-img-top">
-                    <div class="card-body" style="text-align: center;">
+                    <div class="card-body" style="text-align: center;"  *ngIf="wishesservice.getWishByName(product.name) as selectedWish">
                         <h6 class="card-title custom-title">{{product.name}}</h6>
                         <p class="card-text custom-text">$&nbsp;{{product.price}}</p>
                         <p class="card-text">Stock:&nbsp;{{product.stock}}</p>
-                    </div>
-                    <div class="card-footer text-center custom-card">
-                        <ng-container *ngIf="!getWishByName(product.name)">
+                        <ng-container *ngIf="selectedWish.amount == 0">
                             <button class="btn btn-success w-100" (click)="add(product.id)">{{ 'add' | translate }}</button>
                         </ng-container>
                         <table class="table table-borderless widhlist custom-table" style="table-layout: fixed;">
                             <tbody>
-                                <tr class="text-center" *ngIf="getWishByName(product.name)">
-                                    <td><button class="btn btn-success btn-circle" *ngIf="getWishByName(product.name).amount < product.stock" (click)="add(product.id)">+</button></td>
-                                    <td><span>{{getWishByName(product.name).amount}}</span></td>
+                                <tr class="text-center" *ngIf="selectedWish.amount != 0">
+                                    <td><button class="btn btn-success btn-circle" *ngIf="selectedWish.amount < product.stock" (click)="add(product.id)">+</button></td>
+                                    <td><span>{{selectedWish.amount}}</span></td>
                                     <td><button class="btn btn-success  btn-circle" (click)="less(product.id)">-</button></td>
                                 </tr>
                             </tbody>

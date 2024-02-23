@@ -14,6 +14,7 @@ import { Product } from '../../models/product.model'
 })
 export class ProductsService {
   
+  /** Create observable to share productstList array info by subscribe */
   private productstList: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
   public productstList$: Observable<Product[]> = this.productstList.asObservable();
 

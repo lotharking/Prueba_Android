@@ -1,10 +1,8 @@
 /**Controller products and wishes */
 
 import { Component, OnInit } from '@angular/core';
-import { Wishes } from 'src/app/models/wishes.model';
 import { ProductsService } from '../../services/product/products.service';
 import { WishesService } from '../../services/wishes/wishes.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -14,11 +12,8 @@ import { Router } from '@angular/router';
 
 export class CarComponent implements OnInit {
 
-  Wisheses: Wishes[] = [];
-
   constructor(public productsservice: ProductsService, 
-              private wishesservice: WishesService,
-              private router: Router
+              public wishesservice: WishesService,
               ) { }
 
   /**Load init */
@@ -36,16 +31,11 @@ export class CarComponent implements OnInit {
     );
   }
 
-  /*Get wish */
-  getWishByName(productName: string): Wishes {
-    return this.Wisheses.find(wish => wish.product.name === productName && wish.amount!=0);
-  }
-
   /**update list wish */
   uploadWishes(): void {
     this.wishesservice.list().subscribe(
       data => {
-        this.Wisheses = data;
+        this.wishesservice.updateResultList(data);
       }
     );
   }
@@ -54,7 +44,7 @@ export class CarComponent implements OnInit {
   add(id: number=0): void {
     this.wishesservice.add(id).subscribe(
       data => {
-        this.Wisheses = data;
+        this.wishesservice.updateResultList(data);
       }
     );
   }
@@ -63,22 +53,8 @@ export class CarComponent implements OnInit {
   less(id: number=0): void {
     this.wishesservice.less(id).subscribe(
       data => {
-        this.Wisheses = data;
+        this.wishesservice.updateResultList(data);
       }
     );
-  }
-
-  /**delete wish */
-  delete(id: number=0): void {
-    this.wishesservice.delete(id).subscribe(
-      data => {
-        this.Wisheses = data;
-      }
-    );
-  }
-
-  /**Redirect to history */    
-  history(): void {
-    this.router.navigateByUrl('/record');
   }
 }
