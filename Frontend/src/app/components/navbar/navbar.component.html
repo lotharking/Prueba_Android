@@ -32,7 +32,7 @@
     <button type="button" (click)="onLogout()" class="btn btn-danger text-setting">{{ 'logout' | translate }}</button>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#shoppingCarId" aria-controls="shoppingCarId">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fa fa-shopping-cart"></i>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="shoppingCarId" aria-labelledby="shoppingCarIdLabel">
       <div class="offcanvas-header">
@@ -63,11 +63,6 @@
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3">{{ 'selectWishes' | translate }}</td>
-                    </tr>
-                </tfoot>
             </table>
             
         </div>
