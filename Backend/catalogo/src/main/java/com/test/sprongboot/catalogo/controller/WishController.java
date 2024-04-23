@@ -10,7 +10,6 @@ import com.test.sprongboot.catalogo.entity.History;
 import com.test.sprongboot.catalogo.entity.Wish;
 import com.test.sprongboot.catalogo.service.history.HistoryService;
 import com.test.sprongboot.catalogo.service.product.ProductService;
-import com.test.sprongboot.catalogo.service.users.UsersService;
 import com.test.sprongboot.catalogo.service.wish.WishService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +35,11 @@ public class WishController {
     @Autowired
     private HistoryService historyService;
 
-    @Autowired
-    private UsersService usersService;
-
     /**add wish */
     @GetMapping(path = "/add/{id}")
     public ResponseEntity<List<Wish>> add(@PathVariable("id") int id){
         if (wishService.findByIdProduct(id) == null || wishService.findByIdProduct(id).size() == 0){
-            wishService.save(new Wish(productService.getById(id), 1, usersService.findByParam("test")));
+            wishService.save(new Wish(productService.getById(id), 1, 1));
             
             String data = wishService.findIdByProduct(id);
             int data_out = Integer.valueOf(data);
