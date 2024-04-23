@@ -1,14 +1,11 @@
 /**Users controller */
 
-package com.test.sprongboot.catalogo.controller;
+package com.microservice.auth.controller;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.test.sprongboot.catalogo.entity.User;
-import com.test.sprongboot.catalogo.service.users.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.microservice.auth.entity.User;
+import com.microservice.auth.service.UsersService;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

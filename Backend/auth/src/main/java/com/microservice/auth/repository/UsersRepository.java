@@ -1,12 +1,12 @@
 /**Repository for managment of consult in Users */
 
-package com.test.sprongboot.catalogo.repository;
-
-import com.test.sprongboot.catalogo.entity.User;
+package com.microservice.auth.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import com.microservice.auth.entity.User;
 
 public interface UsersRepository extends JpaRepository<User, Integer>{
 

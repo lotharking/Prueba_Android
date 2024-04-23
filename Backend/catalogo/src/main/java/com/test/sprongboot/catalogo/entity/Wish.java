@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,12 +19,11 @@ public class Wish {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Product product;       
     private int amount;    
-    @OneToOne(mappedBy = "wish")
-    private User user;
+    private int user;
     
     public Wish() {}
 
-    public Wish(Product product, int amount, User user) {
+    public Wish(Product product, int amount, int user) {
         this.product = product;
         this.amount = amount;
         this.user = user;
@@ -37,8 +35,8 @@ public class Wish {
     public Product getProduct() { return product; }
     public void setProduct(Product product) { this.product = product; }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    public int getUser() { return user; }
+    public void setUser(int user) { this.user = user; }
 
     public int getAmount() { return amount; }
     public void setAmount(int amount) { this.amount = amount; }

@@ -5,6 +5,33 @@ Este proyecto utiliza Gradle como sistema de construcción, Java Spring Boot par
 El proyecto se organiza de la siguiente manera:
 
 ### Backend
+#### Authentication
+##### Arquitecture
+src
+|-- main
+|   |-- java
+|       |-- com
+|           |-- yourcompany
+|               |-- yourproject
+|                   |-- application
+|                       |-- UserApplicationService.java
+|                   |-- domain
+|                       |-- model
+|                           |-- User.java
+|                       |-- repository
+|                           |-- UserRepository.java
+|                       |-- service
+|                           |-- UserService.java
+|                   |-- infrastructure
+|                       |-- adapter
+|                           |-- UserController.java
+|                           |-- UserRepositoryAdapter.java
+|                       |-- configuration
+|                           |-- ApplicationConfig.java
+|                   |-- Application.java
+|-- resources
+|   |-- application.properties
+
 ### Frontend
 
 ## Configuración de la Base de Datos
